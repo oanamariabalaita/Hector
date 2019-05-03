@@ -21,9 +21,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_navigation">NavigationActivity</string>
 
-    <string name="project_info">This sample app implements MVP architecture using Dagger2, GreenDao, RxJava, FastAndroidNetworking and PlaceholderView</string>
     <string name="title">Feed</string>
-    <string name="blogs">Blogs</string>
     <string name="open_source">Open Source</string>
     <string name="rating_message">Please let us know, how can we improve ourselves?</string>
     <string name="rating_play_store_redirect_message_line_1">Awesome! Thank you for the 5 stars</string>

@@ -1,6 +1,5 @@
 package com.example.hector.data.network
-
-import com.example.hector.di.ApiKeyInfo
+import com.example.hector.annotations.ApiKeyInfo
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import javax.inject.Inject

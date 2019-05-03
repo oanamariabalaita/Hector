@@ -5,7 +5,7 @@ interface NotificationsRepo {
 
     fun isNotificationsRepoEmpty(): Observable<Boolean>
 
-    fun insertNotifications(healthIndicators: List<Notification>): Observable<Boolean>
+    fun insertNotifications(notifications: List<Notification>): Observable<Boolean>
 
     fun loadNotifications(): Observable<List<Notification>>
 }

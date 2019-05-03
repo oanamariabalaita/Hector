@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/action_notifications"
+            android:enabled="true"
+            android:icon="@drawable/notification"
+            android:title=""
+            android:visible="true"
+            app:showAsAction="ifRoom"
+    />
+
+    <item
+            android:id="@+id/action_reports"
+            android:enabled="true"
+            android:icon="@drawable/reports"
+            android:title=""
+            android:visible="true"
+            app:showAsAction="ifRoom"
+    />
+
+</menu>

@@ -3,7 +3,7 @@ package com.example.hector.data.preferences
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import com.example.hector.di.PreferenceInfo
+import com.example.hector.annotations.PreferenceInfo
 import com.example.hector.utils.AppConstants
 import javax.inject.Inject
 

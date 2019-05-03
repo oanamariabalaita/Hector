@@ -1,9 +1,12 @@
 package com.example.hector.ui.main.report
 
+import com.example.hector.ui.main.report.view.ReportFragment
 import dagger.Module
+import dagger.android.ContributesAndroidInjector
 
 @Module
-class ReportFragmentProvider {
+abstract class ReportFragmentProvider {
 
-
+    @ContributesAndroidInjector
+    abstract internal fun provideReportFragment(): ReportFragment
 }

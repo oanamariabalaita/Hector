@@ -4,12 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.hector.utils.CommonUtil
 import dagger.android.support.AndroidSupportInjection
 
- abstract class BaseFragment: Fragment(), MVPView {
+abstract class BaseFragment: Fragment(), MVPView {
 
      private var parentActivity : BaseActivity? = null
      private var progessBar : ProgressBar? = null
