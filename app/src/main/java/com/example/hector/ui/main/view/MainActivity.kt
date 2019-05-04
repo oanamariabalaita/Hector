@@ -1,18 +1,18 @@
 package com.example.hector.ui.main.dashboard.interactor.view
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.hector.R
 import com.example.hector.ui.base.view.BaseActivity
+import com.example.hector.ui.base.view.BaseFragment
 import com.example.hector.ui.main.dashboard.view.DashboardFragment
 import com.example.hector.ui.main.notifications.view.NotificationsFragment
-import com.example.hector.ui.main.report.view.ReportFragment
-import com.example.hector.utils.extensions.addFragment
-import com.example.hector.utils.extensions.removeFragment
-import com.example.hector.utils.extensions.replaceFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.hector.ui.main.profile.view.ProfileFragment
+import com.example.hector.ui.main.settings.view.SettingsFragment
+import com.example.hector.ui.main.statistics.view.StatisticsFragment
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,8 +24,9 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
     @Inject
     internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
-
     override fun supportFragmentInjector() = fragmentDispatchingAndroidInjector
+    override fun getDefaultFragment(): BaseFragment = DashboardFragment.newInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,24 +38,30 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
 
     private fun setListeners() {
         mainFab.setOnClickListener {
-            supportFragmentManager.replaceFragment(
-                R.id.fragmentContainer,
+            replaceFragment(
                 DashboardFragment.newInstance(),
-                DashboardFragment.TAG
+                false
             )
         }
 
         mBottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.action_notifications -> supportFragmentManager.replaceFragment(
-                    R.id.fragmentContainer,
-                    NotificationsFragment.newInstance(),
-                    NotificationsFragment.TAG
+                R.id.action_notifications -> replaceFragment(
+                    NotificationsFragment.newInstance(), false
                 )
-                R.id.action_reports -> supportFragmentManager.replaceFragment(
-                    R.id.fragmentContainer,
-                    ReportFragment.newInstance(),
-                    ReportFragment.TAG
+
+                R.id.action_reports -> replaceFragment(
+                    StatisticsFragment.newInstance(), false
+                )
+
+                R.id.action_settings -> replaceFragment(
+                    SettingsFragment.newInstance(),
+                    false
+                )
+
+                R.id.action_account -> replaceFragment(
+                    ProfileFragment.newInstance(),
+                    false
                 )
             }
             true
@@ -64,22 +71,21 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
     private fun setDash() = mBottomNavigationView.apply {
         inflateMenu(R.menu.bottom_menu)
         enableAnimation(false)
-        enableItemShiftingMode(false)
-        enableShiftingMode(false)
-        enableAnimation(false)
+        labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
         setTextSize(10.0f)
-        setIconsMarginTop(10)
+        setIconsMarginTop(16)
+        itemTextColor = ColorStateList.valueOf(Color.WHITE)
         setIconSize(32.0F, 32.0F)
-        getBottomNavigationItemView(0).background = null
         getBottomNavigationItemView(1).background = null
-//        getBottomNavigationItemView(2).isClickable = false
+        getBottomNavigationItemView(2).background = null
+        getBottomNavigationItemView(3).background = null
+        getBottomNavigationItemView(2).isClickable = false
     }
 
     override fun onFragmentAttached() {
     }
 
     override fun onFragmentDetached(tag: String) {
-        supportFragmentManager?.removeFragment(tag = tag)
     }
 
     override fun onDestroy() {

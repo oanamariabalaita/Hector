@@ -10,6 +10,6 @@
             android:layout_height="match_parent"
             android:textSize="74sp"
             android:textColor="@color/colorAccent"
-            android:text="Report" />
+            android:text="Statistics" />
 
 </FrameLayout>

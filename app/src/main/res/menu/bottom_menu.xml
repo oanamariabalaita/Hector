@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <item
-            android:id="@+id/action_notifications"
-            android:enabled="true"
-            android:icon="@drawable/notification"
-            android:title=""
-            android:visible="true"
-            app:showAsAction="ifRoom"
-    />
+            android:id="@+id/action_account"
+            android:icon="@drawable/usericon"
+            android:title="Profile"/>
 
     <item
             android:id="@+id/action_reports"
-            android:enabled="true"
-            android:icon="@drawable/reports"
-            android:title=""
-            android:visible="true"
-            app:showAsAction="ifRoom"
+            android:icon="@drawable/try2"
+            android:title="Statistics"
+    />
+
+    <item
+            android:id="@+id/empty"
+            tools:ignore="MenuTitle"/>
+
+    <item
+            android:id="@+id/action_notifications"
+            android:icon="@drawable/notificationicon"
+            android:title="Notifications"
+    />
+
+    <item
+            android:id="@+id/action_settings"
+            android:icon="@drawable/try1"
+            android:title="Settings"
     />
 
 </menu>

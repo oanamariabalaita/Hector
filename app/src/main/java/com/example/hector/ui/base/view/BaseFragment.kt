@@ -12,6 +12,8 @@ abstract class BaseFragment: Fragment(), MVPView {
 
      private var parentActivity : BaseActivity? = null
      private var progessBar : ProgressBar? = null
+    val fragmentTag: String = this.javaClass.simpleName
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

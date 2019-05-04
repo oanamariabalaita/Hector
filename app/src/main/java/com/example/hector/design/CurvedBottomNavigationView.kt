@@ -14,7 +14,7 @@ class CurvedBottomNavigationView : BottomNavigationViewEx {
      * the CURVE_CIRCLE_RADIUS represent the radius of the fab button
      */
     companion object {
-        const val CURVE_CIRCLE_RADIUS = 88
+        const val CURVE_CIRCLE_RADIUS = 108
     }
 
     private var mPath = Path()

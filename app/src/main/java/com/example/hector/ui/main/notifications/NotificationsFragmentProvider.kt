@@ -6,8 +6,6 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class NotificationsFragmentProvider {
-
-
     @ContributesAndroidInjector
     abstract internal fun provideNotificationsFragment(): NotificationsFragment
 }
