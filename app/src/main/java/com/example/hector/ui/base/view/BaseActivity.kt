@@ -89,6 +89,7 @@ abstract class BaseActivity : AppCompatActivity(), MVPView, BaseFragment.CallBac
     private fun replaceFragment(containerViewId: Int, fragment: BaseFragment) {
         val ft = supportFragmentManager.beginTransaction()
         ft.setCustomAnimations(
+
             R.anim.enter_from_right,
             R.anim.exit_to_left,
             R.anim.enter_from_left,
