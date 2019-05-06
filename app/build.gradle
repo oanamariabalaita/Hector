@@ -51,6 +51,9 @@ dependencies {
     implementation 'androidx.vectordrawable:vectordrawable-animated:1.0.0'
     implementation  'androidx.cardview:cardview:1.0.0'
 
+    // advanced recycle view
+    implementation 'com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:1.0.0'
+
     // database
     implementation 'androidx.room:room-rxjava2:2.1.0-alpha06'
     kapt 'androidx.room:room-compiler:2.1.0-alpha06'

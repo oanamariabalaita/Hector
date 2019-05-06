@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent" >
 
-<!-- TODO: Update blank fragment layout -->
-<TextView
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="74sp"
-        android:textColor="@color/colorAccent"
-        android:text="Dash" />
+        android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-</FrameLayout>
+        <include
+
+                layout="@layout/item_layout_summary"
+                app:layout_constraintBottom_toTopOf="@id/mainRecycleView"
+                android:id="@+id/included"
+
+        />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mainRecycleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/myRecyclerViewStyle"
+        />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
