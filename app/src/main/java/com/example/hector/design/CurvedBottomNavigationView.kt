@@ -53,8 +53,6 @@ class CurvedBottomNavigationView : BottomNavigationViewEx {
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        // get width and height of navigation bar
-        // Navigation bar bounds (width & height)
 
         // the coordinates (x,y) of the start point before curve
         mFirstCurveStartPoint.set(width / 2 - CURVE_CIRCLE_RADIUS * 2 - CURVE_CIRCLE_RADIUS / 8, 0)

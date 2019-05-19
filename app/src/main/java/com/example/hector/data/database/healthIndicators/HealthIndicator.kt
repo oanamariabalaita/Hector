@@ -39,6 +39,11 @@ data class HealthIndicator(
     var quantitativeVal: Int?=null,
 
     @Expose
+    @SerializedName("indicator_unit")
+    @ColumnInfo(name = "ind_unit")
+    var unit: String? = null,
+
+    @Expose
     @SerializedName("is_selected")
     @ColumnInfo(name = "is_selected")
     var isSelected: Boolean?=null

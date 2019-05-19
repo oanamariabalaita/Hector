@@ -125,4 +125,8 @@ dependencies {
     // Bottom Navigation
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
 
+    //graph
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+
 }

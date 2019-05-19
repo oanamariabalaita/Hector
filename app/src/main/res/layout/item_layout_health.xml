@@ -1,57 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:card_view="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              xmlns:card_view="http://schemas.android.com/apk/res-auto">
+              android:layout_marginRight="0dp"
+              android:layout_marginLeft="0dp">
 
     <androidx.cardview.widget.CardView
             android:id="@+id/mainCardView"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="180dp"
             android:layout_gravity="center"
-            android:layout_margin = "4dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="1.5dp"
+            android:layout_marginRight="1.5dp"
             card_view:cardCornerRadius="@dimen/card_album_radius"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true">
 
-        <LinearLayout
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:padding="10dp"
+        >
 
             <ImageView
                     android:id="@+id/img_icon"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/circle_background"
-                    android:padding="10dp"/>
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"/>
 
             <TextView
-                    android:id="@+id/tv_indicator_name"
+                    android:id="@+id/txt_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textStyle="bold"
-                    android:textSize="15sp"/>
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    android:layout_toRightOf="@id/img_icon"
+                    android:layout_marginLeft="7dp"/>
 
             <View
+                    android:id="@+id/bullet_status"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/circle_background"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="0dip"
+                    android:layout_marginRight="0dip"
+            />
+
+            <TextView
+                    android:id="@+id/txt_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray"
+                    android:textSize="9sp"
+                    android:text="Last record"
+                    android:layout_below="@id/img_icon"
+                    android:layout_marginLeft="16dp"
+            />
+
+            <TextView
+                    android:id="@+id/last_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="32sp"
+                    android:text="--"
+                    android:layout_below="@id/txt_last"
+                    android:layout_marginLeft="16dp"
+
+            />
+
+            <TextView
+                    android:id="@+id/last_value_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text=""
+                    android:layout_toRightOf="@id/last_value"
+                    android:layout_toEndOf="@id/last_value"
+                    android:layout_marginLeft="9dp"
+                    android:layout_below="@id/txt_last"
+                    android:textColor="@color/gray"
+                    android:layout_marginStart="9dp" android:layout_marginTop="25dp"/>
+
+            <View
+                    android:id="@+id/line"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="10dp"
-                    android:background="@color/lightgray" />
+                    android:background="@color/lightgray"
+                    android:layout_below="@id/last_value"
+            />
 
-            <TextView
-                    android:id="@+id/tv_indicator_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="15sp"/>
+            <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/line"
 
-        </LinearLayout>
+            />
+
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 

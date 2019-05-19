@@ -5,12 +5,13 @@
 
     <item
             android:id="@+id/action_account"
-            android:icon="@drawable/usericon"
-            android:title="Profile"/>
+            android:icon="@drawable/baseline_account_circle_24"
+            android:title="Profile"
+    />
 
     <item
             android:id="@+id/action_reports"
-            android:icon="@drawable/try2"
+            android:icon="@drawable/baseline_equalizer_24"
             android:title="Statistics"
     />
 
@@ -20,13 +21,13 @@
 
     <item
             android:id="@+id/action_notifications"
-            android:icon="@drawable/notificationicon"
+            android:icon="@drawable/baseline_notifications_24"
             android:title="Notifications"
     />
 
     <item
             android:id="@+id/action_settings"
-            android:icon="@drawable/try1"
+            android:icon="@drawable/baseline_settings_white_24"
             android:title="Settings"
     />
 
