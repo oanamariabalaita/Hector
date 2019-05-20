@@ -85,7 +85,8 @@
                     android:layout_marginLeft="9dp"
                     android:layout_below="@id/txt_last"
                     android:textColor="@color/gray"
-                    android:layout_marginStart="9dp" android:layout_marginTop="25dp"/>
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="25dp"/>
 
             <View
                     android:id="@+id/line"

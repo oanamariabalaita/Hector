@@ -46,11 +46,12 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
                     txt_title.text = item.indicatorName
                     last_value.text = item.quantitativeVal.toString()
                     last_value_unit.text = item.unit
-//                    if(txt_title.equals("Sleep")){
-//                        var b : Drawable = bullet_status.background
-//                        var c : ShapeDrawable = background as ShapeDrawable
-//                        c.paint.color=ContextCompat.getColor(itemView.context,R.color.red_dark)
-//                    }
+                    if (item.indicatorName == "Sleep") {
+                        var b: Drawable = bullet_status.background
+                        var c: GradientDrawable = b as GradientDrawable
+                        c.mutate()
+                        c.setColor(ContextCompat.getColor(itemView.context, R.color.red_dark))
+                    }
                     initChart(this)
                 }
             }
@@ -59,10 +60,8 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
         private fun initChart(view: View) {
 
             var chart_card = view.chart_card
-
             chart_card.description.isEnabled = false
             chart_card.setTouchEnabled(false)
-            // set listeners
             chart_card.setDrawGridBackground(false)
 
             val values = ArrayList<Entry>()
@@ -78,10 +77,10 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
             if (chart_card.data != null &&
                 chart_card.data.getDataSetCount() > 0
             ) {
-                set1 = chart_card.getData().getDataSetByIndex(0) as LineDataSet
-                set1.setValues(values)
+                set1 = chart_card.data.getDataSetByIndex(0) as LineDataSet
+                set1.values = values
                 set1.notifyDataSetChanged()
-                chart_card.getData().notifyDataChanged()
+                chart_card.data.notifyDataChanged()
                 chart_card.notifyDataSetChanged()
             } else {
 
@@ -93,11 +92,7 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
                 set1.lineWidth = 1f
                 set1.circleRadius = 3f
                 set1.setDrawCircleHole(false)
-
-                // customize legend entry
                 set1.formLineWidth = 0f
-
-                // text size of values
                 set1.valueTextSize = 4f
 
                 chart_card.axisRight.isEnabled = false
