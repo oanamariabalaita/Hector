@@ -20,11 +20,21 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import androidx.core.content.ContextCompat
 import android.graphics.drawable.Drawable
 import com.github.mikephil.charting.utils.Utils.getSDKInt
-import android.graphics.DashPathEffect
 import com.example.hector.R
-import com.github.mikephil.charting.utils.Utils
+import com.example.hector.design.RadarMarkerView
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
+import kotlinx.android.synthetic.main.item_layout_summary.*
+import com.github.mikephil.charting.data.RadarData
+import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet
+import com.github.mikephil.charting.data.RadarDataSet
+import com.github.mikephil.charting.data.RadarEntry
+import com.github.mikephil.charting.formatter.ValueFormatter
 
 
+@SuppressWarnings("MagicNumber", "LongMethod")
 class DashboardFragment : BaseFragment() {
 
     companion object {
@@ -52,8 +62,66 @@ class DashboardFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         initData()
         initViews()
+        initSummaryChart()
         heathCardAdapter.refreshList(healthCardList)
 
+    }
+
+    private fun initSummaryChart() {
+        context?.let { ctx ->
+            chart_summary.setBackgroundColor(Color.rgb(60, 65, 82))
+            chart_summary.description.setEnabled(false)
+            chart_summary.webLineWidth = 1f
+            chart_summary.webColor = Color.LTGRAY
+            chart_summary.webLineWidthInner = 1f
+            chart_summary.webColorInner = Color.LTGRAY
+            chart_summary.webAlpha = 100
+
+            val mv = RadarMarkerView(ctx, R.layout.radar_markerview)
+            mv.setChartView(chart_summary) // For bounds control
+            chart_summary.marker = mv // Set the marker to the chart
+
+            setData()
+
+            chart_summary.animateXY(1400, 1400, Easing.EaseInOutQuad)
+
+            var xAxis: XAxis = chart_summary.xAxis
+            //  xAxis.setTypeface(tfLight)
+            xAxis.setTextSize(9f)
+            xAxis.setYOffset(0f)
+            xAxis.setXOffset(0f)
+
+            xAxis.valueFormatter = object : ValueFormatter() {
+
+                var mActivities: Array<String> =
+                    arrayOf("Weight Management", "Nutrition", "Exercise", "Stress Management", "Pizza")
+
+                override fun getFormattedValue(value: Float): String {
+                    return mActivities.get((value % mActivities.size) as Int)
+                }
+            }
+
+            xAxis.textColor = Color.WHITE
+
+            val yAxis: YAxis = chart_summary.yAxis
+            //yAxis.setTypeface(tfLight)
+            yAxis.setLabelCount(5, false)
+            yAxis.setTextSize(9f)
+            yAxis.setAxisMinimum(0f)
+            yAxis.setAxisMaximum(80f)
+            yAxis.setDrawLabels(false)
+
+            val l: Legend = chart_summary.legend
+            l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP)
+            l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER)
+            l.setOrientation(Legend.LegendOrientation.HORIZONTAL)
+            l.setDrawInside(false)
+            // l.setTypeface(tfLight);
+            l.setXEntrySpace(7f)
+            l.setYEntrySpace(5f)
+            l.setTextColor(Color.WHITE)
+
+        }
     }
 
     private fun initData() {
@@ -158,6 +226,58 @@ class DashboardFragment : BaseFragment() {
                 adapter = heathCardAdapter
             }
         }
+    }
+
+    private fun setData() {
+
+        val mul = 80f
+        val min = 20f
+        val cnt = 5
+
+        val entries1 = ArrayList<RadarEntry>()
+        val entries2 = ArrayList<RadarEntry>()
+
+        // NOTE: The order of the entries when being added to the entries array determines their position around the center of
+        // the chart.
+        for (i in 0 until cnt) {
+            val val1 = (Math.random() * mul).toFloat() + min
+            entries1.add(RadarEntry(val1))
+
+            val val2 = (Math.random() * mul).toFloat() + min
+            entries2.add(RadarEntry(val2))
+        }
+
+        val set1 = RadarDataSet(entries1, "Last Week")
+        set1.color = Color.rgb(103, 110, 129)
+        set1.fillColor = Color.rgb(103, 110, 129)
+        set1.setDrawFilled(true)
+        set1.fillAlpha = 180
+        set1.lineWidth = 2f
+        set1.isDrawHighlightCircleEnabled = true
+        set1.setDrawHighlightIndicators(false)
+
+        val set2 = RadarDataSet(entries2, "This Week")
+        set2.color = Color.rgb(121, 162, 175)
+        set2.fillColor = Color.rgb(121, 162, 175)
+        set2.setDrawFilled(true)
+        set2.fillAlpha = 180
+        set2.lineWidth = 2f
+        set2.isDrawHighlightCircleEnabled = true
+        set2.setDrawHighlightIndicators(false)
+
+        val sets = ArrayList<IRadarDataSet>()
+
+        sets.add(set1)
+        sets.add(set2)
+
+        val data = RadarData(sets)
+        //  data.setValueTypeface(tfLight)
+        data.setValueTextSize(8f)
+        data.setDrawValues(false)
+        data.setValueTextColor(Color.WHITE)
+
+        chart_summary.data = data
+        chart_summary.invalidate()
     }
 
     override fun setUp() {
