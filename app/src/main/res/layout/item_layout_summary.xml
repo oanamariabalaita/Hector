@@ -29,10 +29,11 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/profile"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="7dp"
                     card_view:layout_constraintTop_toTopOf="parent"
-                    card_view:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-                    android:layout_marginStart="10dp"/>
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="10dp"
+            />
 
 
             <com.github.mikephil.charting.charts.RadarChart
@@ -42,20 +43,75 @@
                     android:layout_alignParentBottom="true"
                     card_view:layout_constraintBottom_toBottomOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent"
-                    card_view:layout_constraintEnd_toEndOf="parent"
-                    card_view:layout_constraintStart_toStartOf="parent"/>
+                    card_view:layout_constraintStart_toEndOf="@+id/txt_name"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginStart="50dp"/>
 
             <Button
                     android:id="@+id/btn_menu"
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:background="@drawable/icon_menu2"
                     android:clickable="true"
                     card_view:layout_constraintTop_toTopOf="parent"
                     card_view:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginRight="15dp"
             />
+
+            <TextView
+                    android:id="@+id/txt_name"
+                    android:text="Balaita Oana"
+                    android:textSize="13sp"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    card_view:layout_constraintStart_toEndOf="@+id/profile_image" android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    card_view:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                    android:id="@+id/txt_age"
+                    android:text="12/05/2019"
+                    android:textSize="11sp"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txt_name"
+                    card_view:layout_constraintStart_toEndOf="@+id/profile_image"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"/>
+
+            <TextView
+                    android:id="@+id/txt_description_score"
+                    android:text="Health Score"
+                    android:textSize="10sp"
+                    android:textColor="@color/dark_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    card_view:layout_constraintTop_toBottomOf="@+id/profile_image"
+                    android:layout_marginStart="18dp"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="16dp"/>
+
+            <TextView
+                    android:id="@+id/txt_health_score"
+                    android:text="78"
+                    android:textSize="30sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="@drawable/circular_score"
+                    android:padding="20dp"
+                    card_view:layout_constraintTop_toBottomOf="@+id/txt_description_score"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

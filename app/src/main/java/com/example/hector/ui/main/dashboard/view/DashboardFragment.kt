@@ -11,9 +11,7 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
-import androidx.core.view.setPadding
 import com.example.hector.R
-import com.example.hector.design.RadarMarkerView
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
@@ -23,13 +21,7 @@ import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet
 import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
-import java.lang.reflect.Field
-import java.util.*
 import kotlin.collections.ArrayList
-import android.R.attr.popupMenuStyle
-
-
-
 
 @SuppressWarnings("MagicNumber", "LongMethod")
 class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenuItemClickListener {
@@ -92,7 +84,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
             xAxis.valueFormatter = object : ValueFormatter() {
 
                 var mActivities: Array<String> =
-                    arrayOf("Weight", "Food", "Sport", "Sun", "Sleep", "Mood+")
+                    arrayOf("Weight", "Food", "Sport", "Sun", "Sleep", "Water")
 
                 override fun getFormattedValue(value: Float): String {
                     return mActivities[(value % mActivities.size).toInt()]
@@ -272,7 +264,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_menu -> {
-                val wrapper = ContextThemeWrapper(context, R.style.popupMenuStyle)
+                val wrapper = ContextThemeWrapper(context, R.style.popStyle)
                 val popup = PopupMenu(wrapper, btn_menu)
                 val inflater: MenuInflater = popup.menuInflater
                 inflater.inflate(R.menu.header_menu_dash, popup.menu)
@@ -290,8 +282,6 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
                     popup.setOnMenuItemClickListener(this@DashboardFragment)
                     popup.show()
                 }
-
-                //             popup.show()
             }
         }
     }
