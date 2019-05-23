@@ -2,12 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
             android:id="@+id/action_edit_dash"
-            android:icon="@drawable/com_facebook_send_button_icon"
             android:title="Edit Dashboard"
+            android:icon="@drawable/icon_menu"
     />
     <item
             android:id="@+id/action_add_card"
-            android:title="Add Custom Card"/>
+            android:title="Add Custom Card"
+    />
     <item
             android:id="@+id/action_custom_score"
             android:title="Custom Health Score"/>

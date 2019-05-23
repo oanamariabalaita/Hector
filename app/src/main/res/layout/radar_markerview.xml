@@ -3,8 +3,8 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:id="@+id/radar_makerview"
               android:orientation="vertical"
-              android:layout_width="35dp"
-              android:layout_height="20dp"
+              android:layout_width="20dp"
+              android:layout_height="15dp"
               android:background="@drawable/radar_marker"
               tools:ignore="Overdraw">
     <TextView
