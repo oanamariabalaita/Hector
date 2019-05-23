@@ -2,24 +2,15 @@ package com.example.hector.ui.main.dashboard.view
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.hector.data.database.healthIndicators.HealthIndicator
 import com.example.hector.ui.base.view.BaseFragment
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.highlight.Highlight
 import kotlinx.android.synthetic.main.fragment_dashboard.*
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener
-import kotlinx.android.synthetic.main.item_layout_health.*
-import android.content.res.Resources
-import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import androidx.core.content.ContextCompat
-import android.graphics.drawable.Drawable
-import com.github.mikephil.charting.utils.Utils.getSDKInt
+import android.graphics.Typeface
+import android.util.Log
+import android.view.*
+import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
 import com.example.hector.R
 import com.example.hector.design.RadarMarkerView
 import com.github.mikephil.charting.animation.Easing
@@ -35,7 +26,50 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 
 
 @SuppressWarnings("MagicNumber", "LongMethod")
-class DashboardFragment : BaseFragment() {
+class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenuItemClickListener {
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btn_menu -> {
+                Toast.makeText(context, "HAHAHA", Toast.LENGTH_SHORT).show()
+
+                val popup = PopupMenu(context!!, btn_menu)
+                val inflater: MenuInflater = popup.menuInflater
+                inflater.inflate(R.menu.header_menu_dash, popup.menu)
+                popup.setOnMenuItemClickListener(this@DashboardFragment)
+                popup.show()
+            }
+
+        }
+    }
+
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
+            R.id.action_add_card -> {
+                Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_custom_score -> {
+                Toast.makeText(context, "2", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_edit_dash -> {
+                Toast.makeText(context, "3", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_save_gallery -> {
+                Toast.makeText(context, "4", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_reset_val -> {
+                Toast.makeText(context, "5", Toast.LENGTH_SHORT).show()
+                true
+            }
+
+            else -> false
+        }
+    }
 
     companion object {
 
@@ -49,6 +83,8 @@ class DashboardFragment : BaseFragment() {
     private val heathCardAdapter: HealthCardAdapter by lazy { HealthCardAdapter() }
 
     private val healthCardList = mutableListOf<HealthIndicator>()
+
+    lateinit var tfLight: Typeface
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,62 +100,61 @@ class DashboardFragment : BaseFragment() {
         initViews()
         initSummaryChart()
         heathCardAdapter.refreshList(healthCardList)
-
     }
 
     private fun initSummaryChart() {
         context?.let { ctx ->
-            chart_summary.setBackgroundColor(Color.rgb(60, 65, 82))
+
             chart_summary.description.setEnabled(false)
             chart_summary.webLineWidth = 1f
-            chart_summary.webColor = Color.LTGRAY
+            chart_summary.webColor = Color.GRAY
             chart_summary.webLineWidthInner = 1f
             chart_summary.webColorInner = Color.LTGRAY
             chart_summary.webAlpha = 100
 
             val mv = RadarMarkerView(ctx, R.layout.radar_markerview)
-            mv.setChartView(chart_summary) // For bounds control
-            chart_summary.marker = mv // Set the marker to the chart
+            mv.chartView = chart_summary
+            chart_summary.marker = mv
 
             setData()
 
             chart_summary.animateXY(1400, 1400, Easing.EaseInOutQuad)
+            tfLight = Typeface.createFromAsset(ctx.assets, "OpenSans-Light.ttf")
 
-            var xAxis: XAxis = chart_summary.xAxis
-            //  xAxis.setTypeface(tfLight)
-            xAxis.setTextSize(9f)
-            xAxis.setYOffset(0f)
-            xAxis.setXOffset(0f)
-
+            val xAxis: XAxis = chart_summary.xAxis
+            xAxis.typeface = tfLight
+            xAxis.textSize = 9f
+            xAxis.yOffset = 0f
+            xAxis.xOffset = 0f
             xAxis.valueFormatter = object : ValueFormatter() {
 
                 var mActivities: Array<String> =
-                    arrayOf("Weight Management", "Nutrition", "Exercise", "Stress Management", "Pizza")
+                    arrayOf("Weight Management", "Nutrition", "Exercise", "Stress", "Sleep", "Social Life")
 
                 override fun getFormattedValue(value: Float): String {
-                    return mActivities.get((value % mActivities.size) as Int)
+                    return mActivities[(value % mActivities.size).toInt()]
                 }
             }
 
-            xAxis.textColor = Color.WHITE
+            xAxis.textColor = Color.BLACK
 
             val yAxis: YAxis = chart_summary.yAxis
-            //yAxis.setTypeface(tfLight)
-            yAxis.setLabelCount(5, false)
+            yAxis.setTypeface(tfLight)
+            yAxis.setLabelCount(6, false)
             yAxis.setTextSize(9f)
             yAxis.setAxisMinimum(0f)
             yAxis.setAxisMaximum(80f)
             yAxis.setDrawLabels(false)
 
             val l: Legend = chart_summary.legend
-            l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP)
-            l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER)
-            l.setOrientation(Legend.LegendOrientation.HORIZONTAL)
+            l.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
+            l.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
+            l.orientation = Legend.LegendOrientation.HORIZONTAL
             l.setDrawInside(false)
-            // l.setTypeface(tfLight);
+            l.setTypeface(tfLight)
             l.setXEntrySpace(7f)
             l.setYEntrySpace(5f)
-            l.setTextColor(Color.WHITE)
+            l.setTextColor(Color.BLACK)
 
         }
     }
@@ -224,6 +259,8 @@ class DashboardFragment : BaseFragment() {
             mainRecycleView.apply {
                 layoutManager = GridLayoutManager(ctx, 2)
                 adapter = heathCardAdapter
+                btn_menu.setOnClickListener(this@DashboardFragment)
+
             }
         }
     }
@@ -271,7 +308,7 @@ class DashboardFragment : BaseFragment() {
         sets.add(set2)
 
         val data = RadarData(sets)
-        //  data.setValueTypeface(tfLight)
+        data.setValueTypeface(tfLight)
         data.setValueTextSize(8f)
         data.setDrawValues(false)
         data.setValueTextColor(Color.WHITE)
@@ -282,5 +319,4 @@ class DashboardFragment : BaseFragment() {
 
     override fun setUp() {
     }
-
 }

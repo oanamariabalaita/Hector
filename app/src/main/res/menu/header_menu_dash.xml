@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/action_edit_dash"
+            android:icon="@drawable/com_facebook_send_button_icon"
+            android:title="Edit Dashboard"
+    />
+    <item
+            android:id="@+id/action_add_card"
+            android:title="Add Custom Card"/>
+    <item
+            android:id="@+id/action_custom_score"
+            android:title="Custom Health Score"/>
+    <item
+            android:id="@+id/action_save_gallery"
+            android:title="Save to Gallery"/>
+    <item
+            android:id="@+id/action_reset_val"
+            android:title="Reset Values"/>
+
+</menu>
