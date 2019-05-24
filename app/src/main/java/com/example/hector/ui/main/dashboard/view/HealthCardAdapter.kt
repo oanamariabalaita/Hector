@@ -1,25 +1,26 @@
 package com.example.hector.ui.main.dashboard.view
 
-import android.content.res.Resources
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.ShapeDrawable
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import com.example.hector.R
 import com.example.hector.data.database.healthIndicators.HealthIndicator
 import com.example.hector.ui.base.view.adapter.BaseRecyclerViewAdapter
 import com.example.hector.ui.base.view.adapter.BaseViewHolder
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import kotlinx.android.synthetic.main.item_layout_health.view.*
+import android.graphics.DashPathEffect
+
+
 
 class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
 
@@ -34,7 +35,6 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
                 R.anim.fall_down
             )
         )
-
         super.onBindViewHolder(holder, position)
     }
 
@@ -47,8 +47,8 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
                     last_value.text = item.quantitativeVal.toString()
                     last_value_unit.text = item.unit
                     if (item.indicatorName == "Sleep") {
-                        var b: Drawable = bullet_status.background
-                        var c: GradientDrawable = b as GradientDrawable
+                        val b: Drawable = bullet_status.background
+                        val c: GradientDrawable = b as GradientDrawable
                         c.mutate()
                         c.setColor(ContextCompat.getColor(itemView.context, R.color.red_dark))
                     }
@@ -63,28 +63,49 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
             chart_card.description.isEnabled = false
             chart_card.setTouchEnabled(false)
             chart_card.setDrawGridBackground(false)
+            chart_card.animateY(2000)
+
+            val xLabel = ArrayList<String>()
+            xLabel.add("")
+            xLabel.add("M")
+            xLabel.add("T")
+            xLabel.add("W")
+            xLabel.add("T")
+            xLabel.add("F")
+            xLabel.add("S")
+            xLabel.add("S")
 
             val values = ArrayList<Entry>()
 
             for (i in 1 until 8) {
 
-                val a = (Math.random() * 2).toFloat()
-                values.add(Entry(i.toFloat(), a, ContextCompat.getDrawable(context, R.drawable.icon_home)))
+                val a = (Math.random() * 2).toFloat() + 5
+                values.add(Entry(i.toFloat(), a))
             }
 
-            var set1: LineDataSet
+            val set1: LineDataSet
 
             if (chart_card.data != null &&
-                chart_card.data.getDataSetCount() > 0
+                chart_card.data.dataSetCount > 0
             ) {
-                set1 = chart_card.data.getDataSetByIndex(0) as LineDataSet
-                set1.values = values
-                set1.notifyDataSetChanged()
-                chart_card.data.notifyDataChanged()
+                 set1 = chart_card.data.getDataSetByIndex(0) as LineDataSet
+                 set1.values = values
+                 set1.notifyDataSetChanged()
+                 chart_card.data.notifyDataChanged()
                 chart_card.notifyDataSetChanged()
+
             } else {
 
-                set1 = LineDataSet(values, "Weekly DataSet")
+                val xAxis: XAxis = chart_card.xAxis
+                val formatter: IndexAxisValueFormatter = object : IndexAxisValueFormatter() {
+
+                    override fun getFormattedValue(value: Float): String{
+                        return xLabel[value.toInt()]
+                    }
+                }
+
+                set1 = LineDataSet(values, "Weekly dataset")
+
                 set1.setDrawIcons(false)
                 set1.enableDashedLine(10f, 5f, 0f)
                 set1.color = Color.GRAY
@@ -92,19 +113,24 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
                 set1.lineWidth = 1f
                 set1.circleRadius = 3f
                 set1.setDrawCircleHole(false)
-                set1.formLineWidth = 0f
-                set1.valueTextSize = 4f
-
+   //             set1.formLineWidth = 9f
+                set1.valueTextSize = 7f
+                xAxis.position = XAxis.XAxisPosition.TOP
+                xAxis.granularity = 1f
                 chart_card.axisRight.isEnabled = false
                 chart_card.axisLeft.isEnabled = false
 
                 val dataSets = ArrayList<ILineDataSet>()
                 dataSets.add(set1)
+
                 val data = LineData(dataSets)
-                chart_card.data = data
+                chart_card.setData(data)
+                xAxis.valueFormatter = formatter
+                chart_card.invalidate()
             }
 
         }
+
     }
 
 }
