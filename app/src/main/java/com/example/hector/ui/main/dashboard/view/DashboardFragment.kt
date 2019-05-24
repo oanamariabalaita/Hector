@@ -7,11 +7,16 @@ import com.example.hector.data.database.healthIndicators.HealthIndicator
 import com.example.hector.ui.base.view.BaseFragment
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
 import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import com.example.hector.R
+import com.example.hector.design.RadarMarkerView
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
@@ -52,6 +57,16 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //   presenter.onAttach(this)
         super.onViewCreated(view, savedInstanceState)
+
+        var healthScore: Int = 76
+        val spannable = SpannableString(healthScore.toString() + "/100")
+        spannable.setSpan(
+            RelativeSizeSpan(0.3f),
+            2, 6,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        txt_health_score.text = spannable
+
         initViews()
         initSummaryChart()
         initData()
@@ -69,9 +84,9 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
             chart_summary.webColorInner = Color.LTGRAY
             chart_summary.webAlpha = 100
 
-//            val mv = RadarMarkerView(ctx, R.layout.radar_markerview)
-//            mv.chartView = chart_summary
-//            chart_summary.marker = mv
+            val mv = RadarMarkerView(ctx, R.layout.radar_markerview)
+            mv.chartView = chart_summary
+            chart_summary.marker = mv
 
             setData()
             chart_summary.animateXY(1400, 1400, Easing.EaseInOutQuad)

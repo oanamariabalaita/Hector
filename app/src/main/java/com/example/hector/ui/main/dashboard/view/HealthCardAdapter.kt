@@ -113,7 +113,6 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
                 set1.lineWidth = 1f
                 set1.circleRadius = 3f
                 set1.setDrawCircleHole(false)
-   //             set1.formLineWidth = 9f
                 set1.valueTextSize = 7f
                 xAxis.position = XAxis.XAxisPosition.TOP
                 xAxis.granularity = 1f
