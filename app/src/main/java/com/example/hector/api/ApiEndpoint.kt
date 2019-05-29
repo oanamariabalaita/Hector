@@ -1,6 +1,4 @@
-package com.example.hector.data.network
-
-import com.example.hector.BuildConfig
+package com.example.hector.api
 
 
 object ApiEndpoint {

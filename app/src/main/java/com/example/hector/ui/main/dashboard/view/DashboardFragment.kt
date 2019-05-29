@@ -1,5 +1,7 @@
 package com.example.hector.ui.main.dashboard.view
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -9,12 +11,13 @@ import kotlinx.android.synthetic.main.fragment_dashboard.*
 import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.hector.R
 import com.example.hector.design.RadarMarkerView
 import com.github.mikephil.charting.animation.Easing
@@ -28,8 +31,9 @@ import com.github.mikephil.charting.data.RadarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlin.collections.ArrayList
 
-@SuppressWarnings("MagicNumber", "LongMethod")
-class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenuItemClickListener {
+@SuppressWarnings("MagicNumber", "LongMethod", "MaxLineLength", "ComplexMethod")
+class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenuItemClickListener,
+    ActivityCompat.OnRequestPermissionsResultCallback {
 
     companion object {
 
@@ -39,6 +43,8 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
             return DashboardFragment()
         }
     }
+
+    private final val PERMISSION_STORAGE: Int = 0
 
     private val heathCardAdapter: HealthCardAdapter by lazy { HealthCardAdapter() }
 
@@ -53,7 +59,6 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
     ): View? {
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //   presenter.onAttach(this)
         super.onViewCreated(view, savedInstanceState)
@@ -83,6 +88,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
             chart_summary.webLineWidthInner = 1f
             chart_summary.webColorInner = Color.LTGRAY
             chart_summary.webAlpha = 100
+            chart_summary.isHighlightPerTapEnabled = true
 
             val mv = RadarMarkerView(ctx, R.layout.radar_markerview)
             mv.chartView = chart_summary
@@ -99,7 +105,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
             xAxis.valueFormatter = object : ValueFormatter() {
 
                 var mActivities: Array<String> =
-                    arrayOf("Weight", "Food", "Sport", "Sun", "Sleep", "Water")
+                    arrayOf("Weight", "Food", "Sport", "Stress", "Sleep", "Water")
 
                 override fun getFormattedValue(value: Float): String {
                     return mActivities[(value % mActivities.size).toInt()]
@@ -267,7 +273,6 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
         sets.add(set2)
 
         val data = RadarData(sets)
-        //  data.setValueTypeface(tfLight)
         data.setValueTextSize(8f)
         data.setDrawValues(false)
         data.setValueTextColor(Color.BLACK)
@@ -316,7 +321,18 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
                 true
             }
             R.id.action_save_gallery -> {
-                Toast.makeText(context, "4", Toast.LENGTH_SHORT).show()
+
+                if (context?.let {
+                        ContextCompat.checkSelfPermission(
+                            it,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        )
+                    } == PackageManager.PERMISSION_GRANTED) {
+                    //        saveToGallery()
+                } else {
+                    //       requestStoragePermission(chart_summary)
+                }
+
                 true
             }
             R.id.action_reset_val -> {
@@ -327,6 +343,19 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
             else -> false
         }
     }
+
+
+//   override  fun onRequestPermissionsResult(requestCode : Int, @NonNull permissions : Array<String>, @NonNull grantResults: Array<Int>) {
+//        if (requestCode == PERMISSION_STORAGE) {
+//            if (grantResults.size== 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                saveToGallery()
+//            } else {
+//                Toast.makeText(getApplicationContext(), "Saving FAILED!", Toast.LENGTH_SHORT)
+//                        .show()
+//            }
+//        }
+//    }
+
 
     override fun setUp() {
     }

@@ -4,6 +4,7 @@ import dagger.Module
 import android.app.Application
 import android.content.Context
 import androidx.room.Room.*
+import com.example.hector.BuildConfig
 import com.example.hector.annotations.ApiKeyInfo
 import com.example.hector.annotations.PreferenceInfo
 import com.example.hector.data.database.AppDatabase
@@ -11,9 +12,11 @@ import com.example.hector.data.database.healthIndicators.HealthIndicatorsRepo
 import com.example.hector.data.database.healthIndicators.HealthIndicatorsRepository
 import com.example.hector.data.database.notifications.NotificationsRepo
 import com.example.hector.data.database.notifications.NotificationsRepository
-import com.example.hector.data.network.ApiHeader
-import com.example.hector.data.network.ApiHelper
-import com.example.hector.data.network.AppApiHelper
+import com.example.hector.api.ApiHeader
+import com.example.hector.api.ApiHelper
+import com.example.hector.api.AppApiHelper
+import com.example.hector.data.database.users.UsersRepo
+import com.example.hector.data.database.users.UsersRepository
 import com.example.hector.data.preferences.AppPreferenceHelper
 import com.example.hector.data.preferences.PreferenceHelper
 import com.example.hector.utils.AppConstants
@@ -36,9 +39,10 @@ class ApplicationModule {
     internal fun provideAppDatabase(context: Context): AppDatabase =
         databaseBuilder(context, AppDatabase::class.java, AppConstants.APP_DB_NAME).build()
 
-//    @Provides
-//    @ApiKeyInfo
-//    internal fun provideApiKey(): String = BuildConfig.API_KEY
+    //!!!!!!
+    @Provides
+    @ApiKeyInfo
+    internal fun provideApiKey(): String = BuildConfig.APPLICATION_ID
 
     @Provides
     @PreferenceInfo
@@ -66,6 +70,10 @@ class ApplicationModule {
     @Provides
     @Singleton
     internal fun provideNotificationsRepoHelper(appDatabase: AppDatabase): NotificationsRepo = NotificationsRepository (appDatabase.notificationsDao())
+
+    @Provides
+    @Singleton
+    internal fun UserssRepoHelper(appDatabase: AppDatabase): UsersRepo = UsersRepository(appDatabase.usersDao())
 
     @Provides
     internal fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()

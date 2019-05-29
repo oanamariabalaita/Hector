@@ -1,6 +1,6 @@
 package com.example.hector.ui.base.interactor
 
-import com.example.hector.data.network.ApiHelper
+import com.example.hector.api.ApiHelper
 import com.example.hector.data.preferences.PreferenceHelper
 import com.example.hector.utils.AppConstants
 

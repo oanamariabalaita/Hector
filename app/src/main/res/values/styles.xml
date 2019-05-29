@@ -182,4 +182,10 @@
     </style>
 
 
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextAppearance">@style/TextAppearance.ShowcaseView.Detail.Light</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+
 </resources>

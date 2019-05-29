@@ -1,4 +1,4 @@
-package com.example.hector.data.network
+package com.example.hector.api
 
 import com.rx2androidnetworking.Rx2AndroidNetworking
 import io.reactivex.Observable

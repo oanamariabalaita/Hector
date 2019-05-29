@@ -1,13 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                       xmlns:tools="http://schemas.android.com/tools"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="match_parent"
+>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="PROFILE"
-            android:textSize="49sp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
 
-</LinearLayout>
+
+        <View
+                android:id="@+id/box"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:alpha="0.7"
+                android:background="@drawable/banner6"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+        </View>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imageViewPicture"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:src="@drawable/profile"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="1dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="56dp"
+                app:layout_constraintWidth_percent="0.5"
+                android:layout_marginLeft="90dp"
+                android:layout_marginStart="90dp"
+        />
+
+
+        <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewPicture"
+                android:textSize="30sp"
+                android:layout_marginLeft="90dp"
+                android:layout_marginStart="90dp"
+                android:text="Balaita M. Oana"
+                android:textColor="@color/gray"/>
+
+
+        <TextView
+                android:id="@+id/txt_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About you"
+                android:textSize="12sp"
+                android:textColor="@color/gray"
+                app:layout_constraintTop_toBottomOf="@+id/txt_name"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="25dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_edit_year"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/txt_about"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                app:startIconDrawable="@drawable/year"
+                android:textColorHint="@color/gray"
+        >
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="birthyear"
+
+            />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_edit_height"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/txt_edit_year"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                app:startIconDrawable="@drawable/height"
+                android:textColorHint="@color/gray"
+        >
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="height"
+
+            />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_edit_step"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/txt_edit_height"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                app:startIconDrawable="@drawable/step"
+                android:textColorHint="@color/gray"
+        >
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="step lenght"
+
+            />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/blue_grey_light"
+                android:alpha="0.4"
+                android:layout_marginTop="22dp"
+                app:layout_constraintTop_toBottomOf="@+id/txt_edit_step"
+                app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+        <TextView
+                android:id="@+id/txt_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activity level"
+                android:textSize="12sp"
+                android:textColor="@color/gray"
+                app:layout_constraintTop_toBottomOf="@+id/line"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="25dp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/level1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/level1"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/txt_activity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:clickable="true"
+        />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/level2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/level2"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/txt_activity"
+                app:layout_constraintStart_toEndOf="@+id/level1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+        />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/level3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/level3"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/txt_activity"
+                app:layout_constraintStart_toEndOf="@+id/level2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+        />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/level4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/level4"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/txt_activity"
+                app:layout_constraintStart_toEndOf="@+id/level3"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+        />
+
+        <TextView
+                android:id="@+id/txt_activity_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/light_blue"
+                app:layout_constraintTop_toBottomOf="@+id/level1"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

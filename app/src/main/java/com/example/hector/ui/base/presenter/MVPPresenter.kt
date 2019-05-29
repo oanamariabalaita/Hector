@@ -9,5 +9,5 @@ interface MVPPresenter < V : MVPView, I : MVPInteractor> {
 
     fun onDetach()
 
-    fun getView(): V?
+    fun getViewDem(): V?
 }

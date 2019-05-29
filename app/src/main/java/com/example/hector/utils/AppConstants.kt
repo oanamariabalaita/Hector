@@ -4,8 +4,6 @@ object AppConstants {
 
     internal val APP_DB_NAME = "hector_healthcare"
     internal val PREF_NAME = "hector_pref"
-  //  internal val SEED_DATABASE_QUESTIONS = "seed/questions.json"
-   // internal val SEED_DATABASE_OPTIONS = "seed/options.json"
     internal val EMPTY_EMAIL_ERROR = 1001
     internal val INVALID_EMAIL_ERROR = 1002
     internal val EMPTY_PASSWORD_ERROR = 1003

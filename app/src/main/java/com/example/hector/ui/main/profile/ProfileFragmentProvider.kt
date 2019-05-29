@@ -7,6 +7,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ProfileFragmentProvider {
 
-    @ContributesAndroidInjector
-    abstract internal fun provideProfileFragment(): ProfileFragment
+    @ContributesAndroidInjector(modules = [ProfileFragmentModule::class])
+    internal abstract fun provideProfileFragment(): ProfileFragment
 }

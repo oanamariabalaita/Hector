@@ -1,5 +1,6 @@
 package com.example.hector.ui.main.dashboard.view
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
@@ -9,20 +10,27 @@ import android.view.animation.AnimationUtils
 import androidx.core.content.ContextCompat
 import com.example.hector.R
 import com.example.hector.data.database.healthIndicators.HealthIndicator
+import com.example.hector.design.LineChartMarkerView
 import com.example.hector.ui.base.view.adapter.BaseRecyclerViewAdapter
 import com.example.hector.ui.base.view.adapter.BaseViewHolder
+import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import kotlinx.android.synthetic.main.item_layout_health.view.*
-import android.graphics.DashPathEffect
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 
+class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>(), OnChartValueSelectedListener {
 
+    override fun onNothingSelected() {
+    }
 
-class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
+    override fun onValueSelected(e: Entry?, h: Highlight?) {
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<HealthIndicator> =
         HealthIndicatorsViewHolder(getViewHolderView(parent, R.layout.item_layout_health))
@@ -53,17 +61,22 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
                         c.setColor(ContextCompat.getColor(itemView.context, R.color.red_dark))
                     }
                     initChart(this)
+                    chart_card.setOnChartValueSelectedListener(itemView.context)
                 }
             }
         }
 
         private fun initChart(view: View) {
 
-            var chart_card = view.chart_card
+            val chart_card = view.chart_card
             chart_card.description.isEnabled = false
-            chart_card.setTouchEnabled(false)
+            chart_card.setTouchEnabled(true)
             chart_card.setDrawGridBackground(false)
             chart_card.animateY(2000)
+
+            val mv = LineChartMarkerView(context, R.layout.custom_marker_view)
+            mv.chartView = chart_card
+            chart_card.marker = mv
 
             val xLabel = ArrayList<String>()
             xLabel.add("")
@@ -88,10 +101,10 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
             if (chart_card.data != null &&
                 chart_card.data.dataSetCount > 0
             ) {
-                 set1 = chart_card.data.getDataSetByIndex(0) as LineDataSet
-                 set1.values = values
-                 set1.notifyDataSetChanged()
-                 chart_card.data.notifyDataChanged()
+                set1 = chart_card.data.getDataSetByIndex(0) as LineDataSet
+                set1.values = values
+                set1.notifyDataSetChanged()
+                chart_card.data.notifyDataChanged()
                 chart_card.notifyDataSetChanged()
 
             } else {
@@ -114,6 +127,7 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
                 set1.circleRadius = 3f
                 set1.setDrawCircleHole(false)
                 set1.valueTextSize = 7f
+                set1.setDrawValues(false)
                 xAxis.position = XAxis.XAxisPosition.TOP
                 xAxis.granularity = 1f
                 chart_card.axisRight.isEnabled = false
@@ -131,5 +145,9 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>() {
         }
 
     }
+
+}
+
+private fun LineChart.setOnChartValueSelectedListener(context: Context?) {
 
 }
