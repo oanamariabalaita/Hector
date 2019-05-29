@@ -5,8 +5,8 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.hector.data.database.healthIndicators.HealthIndicator
-import com.example.hector.ui.base.view.BaseFragment
+import com.example.hector.data.local.healthIndicators.HealthIndicator
+import com.example.hector.base.view.BaseFragment
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import android.graphics.Typeface
 import android.text.Spannable

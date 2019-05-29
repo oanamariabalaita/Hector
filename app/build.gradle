@@ -57,16 +57,16 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.1.0-beta01'
 
     // network
-    implementation "com.amitshekhar.android:rx2-android-networking:1.0.1"
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+
 
     // font
     implementation "uk.co.chrisjenx:calligraphy:2.2.0"
 
     // parser
     implementation "com.google.code.gson:gson:2.8.5"
-
-    // debug database
-    debugImplementation "com.amitshekhar.android:debug-db:1.0.3"
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
     // dependency injection
     implementation "com.google.dagger:dagger:2.19"

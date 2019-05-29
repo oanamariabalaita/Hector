@@ -6,8 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.hector.R
-import com.example.hector.ui.base.view.BaseFragment
+import com.example.hector.base.view.BaseFragment
 import com.example.hector.ui.main.profile.interactor.ProfileMVPInteractor
 import com.example.hector.ui.main.profile.presenter.ProfileMVPPresenter
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -15,6 +16,17 @@ import javax.inject.Inject
 
 @SuppressWarnings("TooManyFunctions")
 class ProfileFragment : BaseFragment(), ProfileMVPView, View.OnClickListener {
+    override fun showSuccessUpdateToast() {
+        Toast.makeText(context, "User info updated with success!", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun inflateUserDetails(name: String, year: Int, height: Float, stepLenght: Float) {
+        txt_name.text = name
+        txt_edit_year_val.setText(year.toString())
+        txt_edit_height_val.setText(height.toString())
+        txt_edit_step_val.setText(stepLenght.toString())
+
+    }
 
     lateinit var tfLight: Typeface
 
@@ -60,5 +72,10 @@ class ProfileFragment : BaseFragment(), ProfileMVPView, View.OnClickListener {
             level3 -> txt_activity_level.text = "ACTIVE"
             level4 -> txt_activity_level.text = "VERY ACTIVE"
         }
+    }
+
+    override fun onDestroy() {
+        presenter.onDetach()
+        super.onDestroy()
     }
 }

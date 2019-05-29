@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.hector.R
-import com.example.hector.ui.base.view.BaseFragment
+import com.example.hector.base.view.BaseFragment
 
 class StatisticsFragment : BaseFragment() {
 

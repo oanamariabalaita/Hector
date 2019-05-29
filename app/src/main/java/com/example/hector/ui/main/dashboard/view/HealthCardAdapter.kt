@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.core.content.ContextCompat
 import com.example.hector.R
-import com.example.hector.data.database.healthIndicators.HealthIndicator
+import com.example.hector.data.local.healthIndicators.HealthIndicator
 import com.example.hector.design.LineChartMarkerView
-import com.example.hector.ui.base.view.adapter.BaseRecyclerViewAdapter
-import com.example.hector.ui.base.view.adapter.BaseViewHolder
+import com.example.hector.base.view.adapter.BaseRecyclerViewAdapter
+import com.example.hector.base.view.adapter.BaseViewHolder
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry

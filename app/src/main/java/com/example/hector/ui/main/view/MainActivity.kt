@@ -5,8 +5,8 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.hector.R
-import com.example.hector.ui.base.view.BaseActivity
-import com.example.hector.ui.base.view.BaseFragment
+import com.example.hector.base.view.BaseActivity
+import com.example.hector.base.view.BaseFragment
 import com.example.hector.ui.main.dashboard.view.DashboardFragment
 import com.example.hector.ui.main.notifications.view.NotificationsFragment
 import com.example.hector.ui.main.profile.view.ProfileFragment

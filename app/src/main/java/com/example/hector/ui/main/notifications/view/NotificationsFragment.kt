@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.hector.R
-import com.example.hector.ui.base.view.BaseFragment
+import com.example.hector.base.view.BaseFragment
 import com.nightonke.boommenu.BoomButtons.HamButton
 import kotlinx.android.synthetic.main.fragment_notifications.*
 
