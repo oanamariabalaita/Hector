@@ -1,5 +1,21 @@
-# Hector
-Hector is an application to track and manage various health indicators which will be analysed by big data technologies in order to provide insights.
+<p align="center">An app to track and manage various health indicators which will be analysed by big data technologies in order to provide insights.</p>
+
+## Features 
+
+- Push Notifications
+- Social Login and Registration
+- Real-time Statistics
+- Activity Tracking
+- Sleep traking
+- Customization
+
+## Screenshots
+
+<img src="https://github.com/Oana1234/Hector/blob/master/r3.jpg" width="200px" height="380px"/>        <img src="https://github.com/Oana1234/Hector/blob/master/r2.jpg"  width="200px" height="380px"  />        <img src="https://github.com/Oana1234/Hector/blob/master/r1.jpg" width="200px" height="380px" />       
+
+
+## Dependencies
+
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
