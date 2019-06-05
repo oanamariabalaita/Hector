@@ -11,7 +11,7 @@
 
 ## Screenshots
 
-<img src="https://github.com/Oana1234/Hector/blob/master/r2.jpg"  width="240px" height="380px"  />   <img src="https://github.com/Oana1234/Hector/blob/master/r1.jpg" width="240px" height="380px" />       
+<img src="https://github.com/Oana1234/Hector/blob/master/r2.jpg"  width="240px" height="4300px" hspace="30"  />   <img src="https://github.com/Oana1234/Hector/blob/master/r1.jpg" width="240px" height="380px" />       
 
 
 ## Dependencies
