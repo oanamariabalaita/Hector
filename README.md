@@ -1,14 +1,5 @@
 <p align="center">An app to track and manage various health indicators which will be analysed by big data technologies in order to provide insights.</p>
 
-## Features 
-
-- Push Notifications
-- Social Login and Registration
-- Real-time Statistics
-- Activity Tracking
-- Sleep traking
-- Customization
-
 ## Screenshots
 
 <img src="https://github.com/Oana1234/Hector/blob/master/r2.jpg"  width="240px" height="460px" hspace="60"  />   <img src="https://github.com/Oana1234/Hector/blob/master/r1.jpg" width="240px" height="460px" />       
