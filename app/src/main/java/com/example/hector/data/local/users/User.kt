@@ -14,33 +14,33 @@ data class User(
     var id: Long,
 
     @Expose
-    @SerializedName("userName")
-    @ColumnInfo(name = "user_name")
+    @SerializedName("name")
+    @ColumnInfo(name = "name")
     var userName: String,
 
     @Expose
-    @SerializedName("userGender")
-    @ColumnInfo(name = "user_gender")
+    @SerializedName("gender")
+    @ColumnInfo(name = "gender")
     var userGender: String,
 
     @Expose
-    @SerializedName("userBirthYear")
-    @ColumnInfo(name = "user_birth_year")
+    @SerializedName("birthyear")
+    @ColumnInfo(name = "birthyear")
     var userBirthYear: Int,
 
     @Expose
-    @SerializedName("userHeight")
-    @ColumnInfo(name = "user_height")
+    @SerializedName("height")
+    @ColumnInfo(name = "height")
     var userHeight: Float,
 
     @Expose
-    @SerializedName("userWeight")
-    @ColumnInfo(name = "user_weight")
+    @SerializedName("weight")
+    @ColumnInfo(name = "weight")
     var userWeight: Float,
 
     @Expose
-    @SerializedName("activityLevel")
-    @ColumnInfo(name = "activity_level")
+    @SerializedName("activity")
+    @ColumnInfo(name = "activity")
     var userActivityLevel: String
 
 

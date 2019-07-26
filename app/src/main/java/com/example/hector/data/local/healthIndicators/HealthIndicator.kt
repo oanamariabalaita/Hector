@@ -12,8 +12,8 @@ data class HealthIndicator(
 
     @Expose
     @PrimaryKey(autoGenerate = true)
-    @SerializedName("indicatorId")
-    @ColumnInfo(name = "indicator_id")
+    @SerializedName("id")
+    @ColumnInfo(name = "id")
     var id: Long,
 
     @Expose
@@ -22,18 +22,18 @@ data class HealthIndicator(
     var indicatorName: String,
 
     @Expose
-    @SerializedName("imgId")
-    @ColumnInfo(name = "img_id")
+    @SerializedName("img")
+    @ColumnInfo(name = "img")
     var imgId: String? = null,
 
     @Expose
-    @SerializedName("descriptiveVal")
-    @ColumnInfo(name = "descriptive_val")
+    @SerializedName("descriptive")
+    @ColumnInfo(name = "descriptive")
     var descriptiveVal: String? = null,
 
     @Expose
-    @SerializedName("quantitativeVal")
-    @ColumnInfo(name = "quantitative_val")
+    @SerializedName("quantitative")
+    @ColumnInfo(name = "quantitative")
     var quantitativeVal: Float? = null,
 
     @Expose
@@ -42,13 +42,13 @@ data class HealthIndicator(
     var unit: String? = null,
 
     @Expose
-    @SerializedName("recordedAt")
-    @ColumnInfo(name = "recorded_at")
+    @SerializedName("recorded")
+    @ColumnInfo(name = "recorded")
     var recordedAt: Timestamp? = null,
 
     @Expose
-    @SerializedName("isSelected")
-    @ColumnInfo(name = "is_selected")
+    @SerializedName("selected")
+    @ColumnInfo(name = "selected")
     var isSelected: Boolean? = null
 
 )
