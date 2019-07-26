@@ -7,7 +7,6 @@ import dagger.android.HasActivityInjector
 import dagger.android.DispatchingAndroidInjector
 import javax.inject.Inject
 
-
 class MvpApp : Application(), HasActivityInjector {
 
     @Inject
@@ -22,6 +21,5 @@ class MvpApp : Application(), HasActivityInjector {
             .build()
             .inject(this)
     }
-
 
 }

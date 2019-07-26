@@ -50,7 +50,7 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>(), OnChartVal
         override fun bind(item: HealthIndicator) {
             itemView.apply {
                 item.imgId?.let {
-                    img_icon.setImageResource(it)
+                    img_icon.setImageResource(it.toInt())
                     txt_title.text = item.indicatorName
                     last_value.text = item.quantitativeVal.toString()
                     last_value_unit.text = item.unit
@@ -141,9 +141,7 @@ class HealthCardAdapter : BaseRecyclerViewAdapter<HealthIndicator>(), OnChartVal
                 xAxis.valueFormatter = formatter
                 chart_card.invalidate()
             }
-
         }
-
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.hector.base.view
 
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
 import android.widget.ProgressBar
 import androidx.annotation.IdRes
@@ -83,6 +84,7 @@ abstract class BaseActivity : AppCompatActivity(), MVPView, BaseFragment.CallBac
         ft.addToBackStack(null)
         ft.commit()
     }
+
 
     private fun replaceFragment(containerViewId: Int, fragment: BaseFragment) {
         val ft = supportFragmentManager.beginTransaction()

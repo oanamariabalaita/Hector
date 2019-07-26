@@ -5,47 +5,50 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.sql.Timestamp
 
 @Entity(tableName = "indicators")
 data class HealthIndicator(
 
     @Expose
     @PrimaryKey(autoGenerate = true)
+    @SerializedName("indicatorId")
+    @ColumnInfo(name = "indicator_id")
     var id: Long,
 
     @Expose
-    @SerializedName("indicator_name")
-    @ColumnInfo(name = "indicator_name")
+    @SerializedName("name")
+    @ColumnInfo(name = "name")
     var indicatorName: String,
 
     @Expose
-    @SerializedName("indicator_img_id")
-    @ColumnInfo(name = "indicator_img_id")
-    var imgId: Int?=null,
+    @SerializedName("imgId")
+    @ColumnInfo(name = "img_id")
+    var imgId: String? = null,
 
     @Expose
-    @SerializedName("indicator_description")
-    @ColumnInfo(name = "indicator_description")
-    var descriptionText: String?=null,
+    @SerializedName("descriptiveVal")
+    @ColumnInfo(name = "descriptive_val")
+    var descriptiveVal: String? = null,
 
     @Expose
-    @SerializedName("indicator_descriptive_value")
-    @ColumnInfo(name = "ind_descriptive_value")
-    var descriptiveVal: String?=null,
+    @SerializedName("quantitativeVal")
+    @ColumnInfo(name = "quantitative_val")
+    var quantitativeVal: Float? = null,
 
     @Expose
-    @SerializedName("indicator_quantitative_value")
-    @ColumnInfo(name = "ind_quantitative_value")
-    var quantitativeVal: Int?=null,
-
-    @Expose
-    @SerializedName("indicator_unit")
-    @ColumnInfo(name = "ind_unit")
+    @SerializedName("unit")
+    @ColumnInfo(name = "unit")
     var unit: String? = null,
 
     @Expose
-    @SerializedName("is_selected")
+    @SerializedName("recordedAt")
+    @ColumnInfo(name = "recorded_at")
+    var recordedAt: Timestamp? = null,
+
+    @Expose
+    @SerializedName("isSelected")
     @ColumnInfo(name = "is_selected")
-    var isSelected: Boolean?=null
+    var isSelected: Boolean? = null
 
 )

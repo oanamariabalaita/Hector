@@ -27,7 +27,6 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
     override fun supportFragmentInjector() = fragmentDispatchingAndroidInjector
     override fun getDefaultFragment(): BaseFragment = DashboardFragment.newInstance()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

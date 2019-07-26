@@ -8,27 +8,40 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "users")
 data class User(
+
     @Expose
     @PrimaryKey(autoGenerate = true)
     var id: Long,
 
     @Expose
-    @SerializedName("user_name")
+    @SerializedName("userName")
     @ColumnInfo(name = "user_name")
     var userName: String,
 
     @Expose
-    @SerializedName("user_year")
-    @ColumnInfo(name = "user_year")
+    @SerializedName("userGender")
+    @ColumnInfo(name = "user_gender")
+    var userGender: String,
+
+    @Expose
+    @SerializedName("userBirthYear")
+    @ColumnInfo(name = "user_birth_year")
     var userBirthYear: Int,
 
     @Expose
-    @SerializedName("user_height")
+    @SerializedName("userHeight")
     @ColumnInfo(name = "user_height")
     var userHeight: Float,
 
     @Expose
-    @SerializedName("user_step")
-    @ColumnInfo(name = "user_step")
-    var userStep: Float
+    @SerializedName("userWeight")
+    @ColumnInfo(name = "user_weight")
+    var userWeight: Float,
+
+    @Expose
+    @SerializedName("activityLevel")
+    @ColumnInfo(name = "activity_level")
+    var userActivityLevel: String
+
+
 )
