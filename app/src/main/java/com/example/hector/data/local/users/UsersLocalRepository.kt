@@ -6,13 +6,22 @@ import java.util.concurrent.Callable
 import javax.inject.Inject
 
 class UsersLocalRepository @Inject constructor(private val usersDao: UsersDao) : UsersLocalRepo {
+
     override fun getUserById(id: Long): Single<User> {
         return Single.fromCallable { usersDao.getUserById(id) }
 
     }
 
     override fun updateUser(user: User) {
-        usersDao.update(user.id, user.userName, user.userBirthYear, user.userHeight, user.userStep)
+        usersDao.update(
+            user.id,
+            user.userName,
+            user.userGender,
+            user.userBirthYear,
+            user.userHeight,
+            user.userWeight,
+            user.userActivityLevel
+        )
     }
 
     override fun getAllUsers(): Observable<List<User>> {

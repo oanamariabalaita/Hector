@@ -12,19 +12,32 @@ interface UsersDao {
     @Insert
     fun insertUser(user: User)
 
-    @Query("SELECT * FROM users")
+    @Query("SELECT * FROM user")
     fun getAll(): List<User>
 
-    @Query("SELECT * FROM users WHERE id = :id ")
+    @Query("SELECT * FROM user WHERE id = :id ")
     fun getUserById(id: Long): User
 
     @Delete
     fun delete(user: User)
 
+//    @Query(
+//        "UPDATE user " +
+//                "SET name =:userName, gender= : userGender, birthyear =:userBirthYear, " +
+//                "height =:userHeight, weight=:userWeight, height=:userHeight," +
+//                " activity=:userActivityLevel WHERE id = :id")
+//    fun update(userId: Long, userName: String, userGender: String, userBirthYear: Int, userHeight: Float,  userWeight: Float, userActivityLevel : String)
+
     @Query(
-        "UPDATE users" +
-                " SET user_name =:userName, user_year =:userYear, user_height =:userHeight, user_step=:userStep " +
-                "WHERE id =:userId"
+        "UPDATE user SET name =:userName, gender= :userGender,  birthyear =:userBirthYear, height = :userHeight, weight=:userWeight, height=:userHeight, activity=:userActivityLevel WHERE id = :userId"
     )
-    fun update(userId: Long, userName: String, userYear: Int, userHeight: Float, userStep: Float)
+    fun update(
+        userId: Long,
+        userName: String,
+        userGender: String,
+        userBirthYear: Int,
+        userHeight: Float,
+        userWeight: Float,
+        userActivityLevel: String
+    )
 }

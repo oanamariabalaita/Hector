@@ -132,9 +132,9 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
                 HealthIndicator(
                     1,
                     "Heart Rate",
-                    R.drawable.pulse2,
+                    R.drawable.pulse2.toString(),
                     descriptiveVal = "VERY STABLE",
-                    quantitativeVal = 165,
+                    quantitativeVal = 165f,
                     unit = "BPM"
                 )
             )
@@ -142,9 +142,9 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
                 HealthIndicator(
                     2,
                     "Sleep",
-                    R.drawable.moon,
+                    R.drawable.moon.toString(),
                     descriptiveVal = "12 HOURS ",
-                    quantitativeVal = 4,
+                    quantitativeVal = 4f,
                     unit = "h"
                 )
             )
@@ -152,9 +152,9 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
                 HealthIndicator(
                     3,
                     "Caffeine",
-                    R.drawable.coffee,
+                    R.drawable.coffee.toString(),
                     descriptiveVal = "3 CUPS PER DAY",
-                    quantitativeVal = 3,
+                    quantitativeVal = 3f,
                     unit = "cups"
                 )
             )
@@ -162,9 +162,9 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
                 HealthIndicator(
                     4,
                     "Water",
-                    R.drawable.water,
+                    R.drawable.water.toString(),
                     descriptiveVal = "3 CUPS PER DAY",
-                    quantitativeVal = 5,
+                    quantitativeVal = 5f,
                     unit = "glasses"
                 )
             )
@@ -172,9 +172,9 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
                 HealthIndicator(
                     5,
                     "Blood Glucose",
-                    R.drawable.glucose,
+                    R.drawable.glucose.toString(),
                     descriptiveVal = "3 CUPS PER DAY",
-                    quantitativeVal = 100,
+                    quantitativeVal = 100f,
                     unit = "dl/ml"
                 )
             )
@@ -182,18 +182,18 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
                 HealthIndicator(
                     6,
                     "Hearth Pressure",
-                    R.drawable.hearth_pressure,
+                    R.drawable.hearth_pressure.toString(),
                     descriptiveVal = "3 CUPS PER DAY",
-                    quantitativeVal = 10
+                    quantitativeVal = 10f
                 )
             )
             add(
                 HealthIndicator(
                     7,
                     "Active Time",
-                    R.drawable.steps,
+                    R.drawable.steps.toString(),
                     descriptiveVal = "165 BPM - VERY STABLE",
-                    quantitativeVal = 1034,
+                    quantitativeVal = 1034f,
                     unit = "steps"
                 )
             )
@@ -201,9 +201,9 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, PopupMenu.OnMenu
                 HealthIndicator(
                     8,
                     "Symptom",
-                    R.drawable.headache,
+                    R.drawable.headache.toString(),
                     descriptiveVal = "2 CUPS PER DAY",
-                    quantitativeVal = 3
+                    quantitativeVal = 3f
                 )
             )
 

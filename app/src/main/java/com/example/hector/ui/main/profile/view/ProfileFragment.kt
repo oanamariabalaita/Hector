@@ -25,7 +25,6 @@ class ProfileFragment : BaseFragment(), ProfileMVPView, View.OnClickListener {
         txt_edit_year_val.setText(year.toString())
         txt_edit_height_val.setText(height.toString())
         txt_edit_step_val.setText(stepLenght.toString())
-
     }
 
     lateinit var tfLight: Typeface

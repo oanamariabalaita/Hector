@@ -7,7 +7,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.sql.Timestamp
 
-@Entity(tableName = "indicators")
+@Entity(tableName = "health_indicator")
 data class HealthIndicator(
 
     @Expose
@@ -44,7 +44,7 @@ data class HealthIndicator(
     @Expose
     @SerializedName("recorded")
     @ColumnInfo(name = "recorded")
-    var recordedAt: Timestamp? = null,
+    var recordedAt: String? = null,
 
     @Expose
     @SerializedName("selected")

@@ -18,6 +18,5 @@ class ProfileFragmentModule {
     internal fun provideProfilePresenter(
         presenter: ProfilePresenter<ProfileMVPView,
                 ProfileMVPInteractor>
-    )
-            : ProfileMVPPresenter<ProfileMVPView, ProfileMVPInteractor> = presenter
+    ): ProfileMVPPresenter<ProfileMVPView, ProfileMVPInteractor> = presenter
 }
