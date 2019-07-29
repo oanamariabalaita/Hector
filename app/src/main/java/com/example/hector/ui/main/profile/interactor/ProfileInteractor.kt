@@ -6,15 +6,16 @@ import com.example.hector.data.preferences.PreferenceHelper
 import com.example.hector.base.interactor.BaseInteractor
 import com.example.hector.data.local.users.User
 import com.example.hector.data.remote.UsersRepo
+import io.reactivex.Observable
 import javax.inject.Inject
 
 class ProfileInteractor @Inject internal constructor(
+
     preferenceHelper: PreferenceHelper,
     apiHelper: ApiHelper
 ) : BaseInteractor(preferenceHelper, apiHelper), ProfileMVPInteractor {
-    override fun updateUser(user: User) {
+    override fun doServerApiCall(): Observable<User> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getUserById(id: Long) {
-    }
 }

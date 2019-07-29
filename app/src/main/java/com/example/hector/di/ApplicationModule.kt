@@ -4,15 +4,12 @@ import dagger.Module
 import android.app.Application
 import android.content.Context
 import androidx.room.Room.*
-import com.example.hector.BuildConfig
 import com.example.hector.annotations.ApiKeyInfo
-import com.example.hector.annotations.PreferenceInfo
 import com.example.hector.data.local.AppDatabase
 import com.example.hector.data.local.healthIndicators.HealthIndicatorsRepo
 import com.example.hector.data.local.healthIndicators.HealthIndicatorsRepository
 import com.example.hector.data.local.notifications.NotificationsRepo
 import com.example.hector.data.local.notifications.NotificationsRepository
-import com.example.hector.api.ApiHeader
 import com.example.hector.api.ApiHelper
 import com.example.hector.api.AppApiHelper
 import com.example.hector.data.local.users.UsersLocalRepo
@@ -38,25 +35,6 @@ class ApplicationModule {
     internal fun provideAppDatabase(context: Context): AppDatabase =
         databaseBuilder(context, AppDatabase::class.java, AppConstants.APP_DB_NAME).build()
 
-    //Mock value !!!
-    @Provides
-    @ApiKeyInfo
-    internal fun provideApiKey(): String = BuildConfig.APPLICATION_ID
-
-    @Provides
-    @PreferenceInfo
-    internal fun provideprefFileName(): String = AppConstants.PREF_NAME
-
-    @Provides
-    @Singleton
-    internal fun providePrefHelper(appPreferenceHelper: AppPreferenceHelper): PreferenceHelper = appPreferenceHelper
-
-    @Provides
-    @Singleton
-    internal fun provideProtectedApiHeader(@ApiKeyInfo apiKey: String, preferenceHelper: PreferenceHelper)
-            : ApiHeader.ProtectedApiHeader = ApiHeader.ProtectedApiHeader(apiKey = apiKey,
-        userId = preferenceHelper.getCurrentUserId(),
-        accessToken = preferenceHelper.getAccessToken())
 
     @Provides
     @Singleton
