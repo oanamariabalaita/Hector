@@ -6,6 +6,6 @@ import io.reactivex.Observable
 
 interface ProfileMVPInteractor : MVPInteractor {
 
-    fun doServerApiCall(): Observable<User>
+    fun performServerApiCall(): Observable<User>
 
 }

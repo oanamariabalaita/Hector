@@ -29,6 +29,5 @@ class UsersRepository : UsersRepo {
                 }
             }).subscribeOn(Schedulers.io()), localUsersRepo.getAllUsers().subscribeOn(Schedulers.io())
         )
-
     }
 }

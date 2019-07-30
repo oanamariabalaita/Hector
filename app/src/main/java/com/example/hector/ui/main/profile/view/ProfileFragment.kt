@@ -21,7 +21,7 @@ class ProfileFragment : BaseFragment(), ProfileMVPView, View.OnClickListener {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun showUserInfo(user: User) {
+    override fun updateUserInfo(user: User) {
         txt_name.text = user.userName
         txt_edit_year_val.setText(user.userBirthYear.toString())
         txt_edit_height_val.setText(user.userHeight.toString())

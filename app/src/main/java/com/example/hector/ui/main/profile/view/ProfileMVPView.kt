@@ -9,7 +9,7 @@ interface ProfileMVPView : MVPView {
 
     fun showErrorUpdateToast()
 
-    fun showUserInfo(user: User)
+    fun updateUserInfo(user: User)
 
     fun onSaveClicked()
 

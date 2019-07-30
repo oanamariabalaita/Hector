@@ -9,7 +9,6 @@ import com.example.hector.data.local.healthIndicators.HealthIndicatorsRepo
 import com.example.hector.data.local.healthIndicators.HealthIndicatorsRepository
 import com.example.hector.data.local.notifications.NotificationsRepo
 import com.example.hector.data.local.notifications.NotificationsRepository
-import com.example.hector.api.ApiHelper
 import com.example.hector.api.AppApiHelper
 import com.example.hector.data.local.users.UsersLocalRepo
 import com.example.hector.data.local.users.UsersLocalRepository
