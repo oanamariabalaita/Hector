@@ -4,7 +4,6 @@ import dagger.Module
 import android.app.Application
 import android.content.Context
 import androidx.room.Room.*
-import com.example.hector.annotations.ApiKeyInfo
 import com.example.hector.data.local.AppDatabase
 import com.example.hector.data.local.healthIndicators.HealthIndicatorsRepo
 import com.example.hector.data.local.healthIndicators.HealthIndicatorsRepository
@@ -35,10 +34,15 @@ class ApplicationModule {
     internal fun provideAppDatabase(context: Context): AppDatabase =
         databaseBuilder(context, AppDatabase::class.java, AppConstants.APP_DB_NAME).build()
 
-
     @Provides
     @Singleton
     internal fun provideApiHelper(appApiHelper: AppApiHelper): ApiHelper = appApiHelper
+
+
+    @Provides
+    @Singleton
+    internal fun providePrefHelper(appPreferenceHelper: AppPreferenceHelper): PreferenceHelper = appPreferenceHelper
+
 
     @Provides
     @Singleton

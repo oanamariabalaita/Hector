@@ -25,7 +25,7 @@ abstract class BaseActivity : AppCompatActivity(), MVPView, BaseFragment.CallBac
         performDI()
         super.onCreate(savedInstanceState)
         getDefaultFragment()?.let {
-            replaceFragment(it,false)
+            replaceFragment(it, false)
         }
     }
 
@@ -53,7 +53,7 @@ abstract class BaseActivity : AppCompatActivity(), MVPView, BaseFragment.CallBac
     }
 
     fun replaceFragment(fragment: BaseFragment, withBackStack: Boolean) {
-    //    if(getVisibleFragment().tag!=fragment.tag)
+        //    if(getVisibleFragment().tag!=fragment.tag)
         if (withBackStack) {
             replaceFragmentWithBackStack(containerId, fragment)
         } else {
@@ -64,14 +64,13 @@ abstract class BaseActivity : AppCompatActivity(), MVPView, BaseFragment.CallBac
     fun getVisibleFragment(): Fragment? {
         val fragmentManager = getSupportFragmentManager()
         val fragments = fragmentManager.getFragments()
-        if (fragments != null) {
-            for (fragment in fragments) {
-                if (fragment != null && fragment!!.isVisible())
-                    return fragment
-            }
+        for (fragment in fragments) {
+            if (fragment != null && fragment.isVisible())
+                return fragment
         }
         return null
     }
+
     private fun replaceFragmentWithBackStack(containerViewId: Int, fragment: BaseFragment) {
         val ft = supportFragmentManager.beginTransaction()
         ft.setCustomAnimations(
