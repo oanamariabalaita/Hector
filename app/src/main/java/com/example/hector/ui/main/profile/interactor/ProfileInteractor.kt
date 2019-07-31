@@ -1,5 +1,6 @@
 package com.example.hector.ui.main.profile.interactor
 
+import com.example.hector.api.ApiHelper
 import com.example.hector.data.preferences.PreferenceHelper
 import com.example.hector.base.interactor.BaseInteractor
 import com.example.hector.data.local.users.User
