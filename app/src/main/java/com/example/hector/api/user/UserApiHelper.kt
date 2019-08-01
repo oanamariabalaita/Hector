@@ -1,6 +1,6 @@
 package com.example.hector.api.user
 
-import com.example.hector.api.ApiEndpoint
+import com.example.hector.api.ApiConstants
 import com.example.hector.api.ApiHelper
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -22,7 +22,7 @@ class UserApiHelper @Inject constructor() : ApiHelper() {
         clientBuilder.addInterceptor {
             it.proceed(createInterceptorRequest(it))
         }
-        val endpoint = ApiEndpoint.ENDPOINT_SERVER__USER
+        val endpoint = ApiConstants.BASE_URL + ApiConstants.ENDPOINT_SERVER__USER
         val retrofit = initRxRetrofit(endpoint, clientBuilder.build())
         return retrofit.create(UserApiService::class.java)
     }
