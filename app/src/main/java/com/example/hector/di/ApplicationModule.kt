@@ -4,14 +4,10 @@ import dagger.Module
 import android.app.Application
 import android.content.Context
 import androidx.room.Room.*
+import com.example.hector.data.UsersRepository
 import com.example.hector.data.local.AppDatabase
-import com.example.hector.data.local.healthIndicators.HealthIndicatorsRepo
-import com.example.hector.data.local.healthIndicators.HealthIndicatorsRepository
-import com.example.hector.data.local.notifications.NotificationsRepo
-import com.example.hector.data.local.notifications.NotificationsRepository
-import com.example.hector.api.AppApiHelper
-import com.example.hector.data.local.users.UsersLocalRepo
-import com.example.hector.data.local.users.UsersLocalRepository
+import com.example.hector.data.local.user.UsersLocalRepo
+import com.example.hector.data.local.user.UsersLocalRepository
 import com.example.hector.data.preferences.AppPreferenceHelper
 import com.example.hector.data.preferences.PreferenceHelper
 import com.example.hector.utils.AppConstants
@@ -35,26 +31,11 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    internal fun provideApiHelper(appApiHelper: AppApiHelper): ApiHelper = appApiHelper
-
-
-    @Provides
-    @Singleton
     internal fun providePrefHelper(appPreferenceHelper: AppPreferenceHelper): PreferenceHelper = appPreferenceHelper
 
-
     @Provides
     @Singleton
-    internal fun provideHealthIndicatorsRepoHelper(appDatabase: AppDatabase): HealthIndicatorsRepo = HealthIndicatorsRepository(appDatabase.healthIndicatorDao())
-
-    @Provides
-    @Singleton
-    internal fun provideNotificationsRepoHelper(appDatabase: AppDatabase): NotificationsRepo = NotificationsRepository (appDatabase.notificationsDao())
-
-    @Provides
-    @Singleton
-    internal fun UsersRepoHelper(appDatabase: AppDatabase): UsersLocalRepo =
-        UsersLocalRepository(appDatabase.usersDao())
+    internal fun provideUsersRepository(userRepository: UsersRepository): UsersRepository = userRepository
 
     @Provides
     internal fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()

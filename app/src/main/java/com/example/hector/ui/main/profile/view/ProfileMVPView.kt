@@ -1,7 +1,7 @@
 package com.example.hector.ui.main.profile.view
 
 import com.example.hector.base.view.MVPView
-import com.example.hector.data.local.users.User
+import com.example.hector.data.local.user.User
 
 interface ProfileMVPView : MVPView {
 

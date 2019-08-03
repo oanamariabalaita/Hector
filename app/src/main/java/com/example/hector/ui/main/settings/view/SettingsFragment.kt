@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.example.hector.R
 import com.example.hector.base.view.BaseFragment
 
-class SettingsFragment: BaseFragment() {
+class SettingsFragment : BaseFragment() {
 
     companion object {
 

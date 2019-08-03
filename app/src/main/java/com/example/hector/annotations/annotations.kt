@@ -1,9 +1,24 @@
 package com.example.hector.annotations
 
 import javax.inject.Qualifier
+import javax.inject.Scope
 
 @Qualifier
-@Retention annotation class PreferenceInfo
+@Retention(AnnotationRetention.RUNTIME)
+annotation class PreferenceInfo
 
 @Qualifier
-@Retention annotation class ApiKeyInfo
+@Retention(AnnotationRetention.RUNTIME)
+annotation class ApiInfo
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class DatabaseInfo
+
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
+annotation class PerActivity
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class ActivityContext

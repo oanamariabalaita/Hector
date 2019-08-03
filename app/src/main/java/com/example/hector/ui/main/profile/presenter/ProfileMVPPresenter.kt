@@ -1,7 +1,7 @@
 package com.example.hector.ui.main.profile.presenter
 
 import com.example.hector.base.presenter.MVPPresenter
-import com.example.hector.data.local.users.User
+import com.example.hector.data.local.user.User
 import com.example.hector.ui.main.profile.interactor.ProfileMVPInteractor
 import com.example.hector.ui.main.profile.view.ProfileMVPView
 

@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.hector.R
 import com.example.hector.base.view.BaseFragment
-import com.example.hector.data.local.users.User
+import com.example.hector.data.local.user.User
 import com.example.hector.ui.main.profile.interactor.ProfileMVPInteractor
 import com.example.hector.ui.main.profile.presenter.ProfileMVPPresenter
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -17,6 +17,8 @@ import javax.inject.Inject
 
 @SuppressWarnings("TooManyFunctions")
 class ProfileFragment : BaseFragment(), ProfileMVPView, View.OnClickListener {
+
+
     override fun showErrorUpdateToast() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

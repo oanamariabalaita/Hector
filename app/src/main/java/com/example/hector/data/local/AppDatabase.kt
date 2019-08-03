@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.hector.data.local.healthIndicators.HealthIndicator
-import com.example.hector.data.local.healthIndicators.HealthIndicatorsDao
-import com.example.hector.data.local.notifications.Notification
-import com.example.hector.data.local.notifications.NotificationsDao
-import com.example.hector.data.local.users.User
-import com.example.hector.data.local.users.UsersDao
+import com.example.hector.data.local.indicator.HealthIndicator
+import com.example.hector.data.local.indicator.HealthIndicatorsDao
+import com.example.hector.data.local.notification.Notification
+import com.example.hector.data.local.notification.NotificationsDao
+import com.example.hector.data.local.user.User
+import com.example.hector.data.local.user.UsersDao
 
 @Database(entities = [(Notification::class), (HealthIndicator::class), (User::class)], version = 1)
 abstract class AppDatabase : RoomDatabase(){
