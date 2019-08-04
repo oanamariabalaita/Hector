@@ -22,9 +22,9 @@ class UsersLocalRepository @Inject constructor(private val usersDao: UsersDao) :
         )
     }
 
-    override fun getAllUsers(): Observable<List<User>> {
-        return Observable.fromCallable { usersDao.getAll() }
-    }
+//    override fun getAllUsers(): Observable<List<User>> {
+//        return Observable.fromCallable { usersDao.getAll() }
+//    }
 
     override fun addUsers(users: List<User>) {
         usersDao.insertAll(users)

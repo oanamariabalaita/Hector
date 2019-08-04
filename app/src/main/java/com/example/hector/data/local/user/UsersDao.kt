@@ -1,6 +1,7 @@
 package com.example.hector.data.local.user
 
 import androidx.room.*
+import io.reactivex.Observable
 import io.reactivex.Single
 
 @Dao
@@ -13,7 +14,7 @@ interface UsersDao {
     fun insertUser(user: User)
 
     @Query("SELECT * FROM user")
-    fun getAll(): Single<List<User>>
+    fun getAll(): Observable<List<User>>
 
     @Query("SELECT * FROM user WHERE id = :id ")
     fun getUserById(id: Long): User

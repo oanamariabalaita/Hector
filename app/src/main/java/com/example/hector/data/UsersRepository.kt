@@ -17,13 +17,13 @@ class UsersRepository(val userApiHelper: UserApiHelper, val usersDao: UsersDao) 
     }
 
 
-    override fun getAllUsersFromDB(): Observable<List<User>> {
-        return usersDao.getAll().filter { it.isNotEmpty() }
-            .toObservable()
-            .doOnNext {
-                Timber.d("Dispatching ${it.size} users from DB...")
-            }
-    }
+//    override fun getAllUsersFromDB(): Observable<List<User>> {
+//        return usersDao.getAll().filter { it.isNotEmpty() }
+//            .toObservable()
+//            .doOnNext {
+//                Timber.d("Dispatching ${it.size} users from DB...")
+//            }
+//    }
 
 
     fun getUsersFromApi(): Observable<List<User>> {
@@ -36,7 +36,7 @@ class UsersRepository(val userApiHelper: UserApiHelper, val usersDao: UsersDao) 
 
     fun getUsers(): Observable<List<User>> {
         return Observable.concatArray(
-            getAllUsersFromDB(),
+            //getAllUsersFromDB(),
             getUsersFromApi()
         )
     }

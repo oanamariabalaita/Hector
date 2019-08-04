@@ -8,5 +8,5 @@ interface UsersRepo {
 
     fun getUserById(id: Long): Single<User>
 
-    fun getAllUsersFromDB(): Observable<List<User>>
+    //fun getAllUsersFromDB(): Observable<List<User>>
 }

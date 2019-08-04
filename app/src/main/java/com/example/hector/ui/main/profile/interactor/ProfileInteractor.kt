@@ -8,9 +8,7 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 class ProfileInteractor @Inject internal constructor(
-    preferenceHelper: PreferenceHelper,
-    apiHelper: ApiHelper
-) : BaseInteractor(apiHelper, preferenceHelper), ProfileMVPInteractor {
+) : BaseInteractor(), ProfileMVPInteractor {
 
     override fun performServerApiCall(): Observable<User> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

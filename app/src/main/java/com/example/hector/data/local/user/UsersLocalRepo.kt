@@ -5,7 +5,7 @@ import io.reactivex.Single
 
 interface UsersLocalRepo {
 
-    fun getAllUsers(): Observable<List<User>>
+    //  fun getAllUsers(): Observable<List<User>>
 
     fun getUserById(id: Long): Single<User>
 
