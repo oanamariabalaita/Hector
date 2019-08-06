@@ -8,41 +8,37 @@
 ## Dependencies
 
 dependencies {
-
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // kotlin
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // android support libraries
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
-    implementation 'androidx.core:core-ktx:1.1.0-alpha05'
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
+    implementation 'androidx.core:core-ktx:1.2.0-alpha01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha05'
+    implementation 'com.google.android.material:material:1.1.0-alpha06'
     implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
     implementation 'androidx.vectordrawable:vectordrawable-animated:1.0.0'
+    implementation  'androidx.cardview:cardview:1.0.0'
 
 
     // database
-    implementation 'androidx.room:room-rxjava2:2.1.0-alpha06'
-    kapt 'androidx.room:room-compiler:2.1.0-alpha06'
+    implementation 'androidx.room:room-rxjava2:2.1.0-beta01'
+    kapt 'androidx.room:room-compiler:2.1.0-beta01'
 
     // network
-    implementation "com.amitshekhar.android:rx2-android-networking:1.0.1"
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
 
     // font
     implementation "uk.co.chrisjenx:calligraphy:2.2.0"
 
-    // image
-    implementation "com.github.bumptech.glide:glide:3.7.0"
-
     // parser
     implementation "com.google.code.gson:gson:2.8.5"
-
-    // debug database
-    debugImplementation "com.amitshekhar.android:debug-db:1.0.3"
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
     // dependency injection
     implementation "com.google.dagger:dagger:2.19"
@@ -53,10 +49,6 @@ dependencies {
     // reactive
     implementation "io.reactivex.rxjava2:rxjava:2.2.0"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
-
-    // code generator for view
-    implementation "com.jakewharton:butterknife:8.8.1"
-    kapt "com.jakewharton:butterknife-compiler:8.8.1"
 
     // swipe view
     implementation "com.mindorks:placeholderview:0.6.1"
@@ -76,7 +68,7 @@ dependencies {
     kaptAndroidTest "com.google.dagger:dagger-compiler:2.19"
 
     // Android Kotlin Extension
-    implementation 'androidx.core:core-ktx:1.0.1'
+    implementation 'androidx.core:core-ktx:1.0.2'
 
     implementation 'android.arch.navigation:navigation-fragment:1.0.0'
 
@@ -89,11 +81,29 @@ dependencies {
     //compileOnly 'javax.annotation:jsr250-api:1.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
 
-    implementation 'javax.xml.bind:jaxb-api:2.3.0'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
 
     implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
 
     // Bottom Navigation
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
+
+    //graph
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //circle imageview
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    //boom-menu
+    implementation 'com.nightonke:boommenu:2.1.1'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.4.0'
+    kapt 'com.github.bumptech.glide:compiler:4.4.0'
+
+    // Network debugging - Chuck
+    debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
+    releaseApi 'com.readystatesoftware.chuck:library-no-op:1.1.0'
+
 
 }
