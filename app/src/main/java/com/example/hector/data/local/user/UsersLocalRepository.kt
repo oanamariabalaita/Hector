@@ -5,6 +5,13 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class UsersLocalRepository @Inject constructor(private val usersDao: UsersDao) : UsersLocalRepo {
+    override fun deleteUser(id: Long) {
+        TODO("not implemented")
+    }
+
+    override fun addUser(user: User) {
+        usersDao.insertUser(user)
+    }
 
     override fun getUserById(id: Long): Single<User> {
         return Single.fromCallable { usersDao.getUserById(id) }
@@ -22,11 +29,9 @@ class UsersLocalRepository @Inject constructor(private val usersDao: UsersDao) :
         )
     }
 
-//    override fun getAllUsers(): Observable<List<User>> {
-//        return Observable.fromCallable { usersDao.getAll() }
-//    }
-
-    override fun addUsers(users: List<User>) {
-        usersDao.insertAll(users)
+    override fun getAllUsers(): Observable<List<User>> {
+        return usersDao.getAll()
     }
+
+
 }

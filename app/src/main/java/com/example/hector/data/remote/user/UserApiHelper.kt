@@ -26,7 +26,7 @@ class UserApiHelper @Inject constructor() : ApiHelper() {
         clientBuilder.addInterceptor {
             it.proceed(createInterceptorRequest(it))
         }
-        val endpoint = ApiConstants.BASE_URL + ApiConstants.ENDPOINT_SERVER__USER
+        val endpoint = ApiConstants.BASE_URL + ApiConstants.ENDPOINT_SERVER
         val retrofit = initRxRetrofit(endpoint, clientBuilder.build())
         return retrofit.create(UserApiService::class.java)
     }

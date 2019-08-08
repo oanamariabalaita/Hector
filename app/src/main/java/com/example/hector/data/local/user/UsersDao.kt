@@ -4,6 +4,7 @@ import androidx.room.*
 import io.reactivex.Observable
 import io.reactivex.Single
 
+@Suppress("LongParameterList")
 @Dao
 interface UsersDao {
 

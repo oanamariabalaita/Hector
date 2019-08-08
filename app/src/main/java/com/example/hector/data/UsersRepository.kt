@@ -16,7 +16,35 @@ class UsersRepository(val userApiHelper: UserApiHelper, val usersDao: UsersDao) 
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun storeUserInDB(user: User) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
+    override fun getUsersFromDB(): Observable<List<User>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getUsersFromAPI(): Observable<List<User>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getUsers(): Observable<List<User>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun editUserInDB(user: User) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun editUserFromApi(user: User) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+//
+//    override fun getUserById(id: Long): Single<User> {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
+//
+//
 //    override fun getAllUsersFromDB(): Observable<List<User>> {
 //        return usersDao.getAll().filter { it.isNotEmpty() }
 //            .toObservable()
@@ -24,33 +52,33 @@ class UsersRepository(val userApiHelper: UserApiHelper, val usersDao: UsersDao) 
 //                Timber.d("Dispatching ${it.size} users from DB...")
 //            }
 //    }
-
-
-    fun getUsersFromApi(): Observable<List<User>> {
-        return userApiHelper.userApiService.getUsers()
-            .doOnNext {
-                Timber.d("Dispatching ${it.size} users from API...")
-                storeUsersInDb(it)
-            }
-    }
-
-    fun getUsers(): Observable<List<User>> {
-        return Observable.concatArray(
-            //getAllUsersFromDB(),
-            getUsersFromApi()
-        )
-    }
-
-    fun storeUsersInDb(users: List<User>) {
-        Observable.fromCallable { usersDao.insertAll(users) }
-            .subscribeOn(Schedulers.io())
-            .observeOn(Schedulers.io())
-            .subscribe {
-                Timber.d("Inserted ${users.size} users from API in DB...")
-            }
-    }
-
-
+//
+//
+//    fun getUsersFromApi(): Observable<List<User>> {
+//        return userApiHelper.userApiService.getUsers()
+//            .doOnNext {
+//                Timber.d("Dispatching ${it.size} users from API...")
+//                storeUsersInDb(it)
+//            }
+//    }
+//
+//    fun getUsers(): Observable<List<User>> {
+//        return Observable.concatArray(
+//            //getAllUsersFromDB(),
+//            getUsersFromApi()
+//        )
+//    }
+//
+//    fun storeUsersInDb(users: List<User>) {
+//        Observable.fromCallable { usersDao.insertAll(users) }
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(Schedulers.io())
+//            .subscribe {
+//                Timber.d("Inserted ${users.size} users from API in DB...")
+//            }
+//    }
+//
+//
 //        return Observable.mergeDelayError(
 //            remoteUsersRepo.getAllUsers().doOnNext(object : Consumer<List<User>> {
 //                @Throws(Exception::class)
