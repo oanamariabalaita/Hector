@@ -4,12 +4,14 @@ import dagger.Module
 import android.app.Application
 import android.content.Context
 import androidx.room.Room.*
+import com.example.hector.base.api.ApiHelper
+import com.example.hector.data.UsersRepo
 import com.example.hector.data.UsersRepository
 import com.example.hector.data.local.AppDatabase
-import com.example.hector.data.local.user.UsersLocalRepo
 import com.example.hector.data.local.user.UsersLocalRepository
 import com.example.hector.data.preferences.AppPreferenceHelper
 import com.example.hector.data.preferences.PreferenceHelper
+import com.example.hector.data.remote.user.UserApiHelper
 import com.example.hector.utils.AppConstants
 import com.example.hector.utils.SchedulerProvider
 import dagger.Provides
@@ -35,7 +37,16 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    internal fun provideUsersRepository(userRepository: UsersRepository): UsersRepository = userRepository
+    internal fun provideUsersRepository(): UsersRepo = UsersRepository()
+
+    @Provides
+    @Singleton
+    internal fun provideUsersLocalRepository(appDatabase: AppDatabase): UsersLocalRepository =
+        UsersLocalRepository(appDatabase.usersDao())
+
+    @Provides
+    @Singleton
+    fun provideUserApiHelper(usersApiHelper: UserApiHelper): ApiHelper = usersApiHelper
 
     @Provides
     internal fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()

@@ -6,6 +6,7 @@ import javax.inject.Inject
 
 class UsersLocalRepository @Inject constructor(private val usersDao: UsersDao) : UsersLocalRepo {
     override fun deleteUser(id: Long) {
+
         TODO("not implemented")
     }
 
@@ -18,15 +19,17 @@ class UsersLocalRepository @Inject constructor(private val usersDao: UsersDao) :
     }
 
     override fun updateUser(user: User) {
-        usersDao.update(
-            user.id,
-            user.userName,
-            user.userGender,
-            user.userBirthYear,
-            user.userHeight,
-            user.userWeight,
-            user.userActivityLevel
-        )
+        user.apply {
+            usersDao.update(
+                id,
+                userName,
+                userGender,
+                userBirthYear,
+                userHeight,
+                userWeight,
+                userActivityLevel
+            )
+        }
     }
 
     override fun getAllUsers(): Observable<List<User>> {

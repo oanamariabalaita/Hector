@@ -17,17 +17,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 class ActivityModule {
 
-//    @PerActivity
-//    @Binds
-//    internal abstract fun provideProfileMVPPresenter(presenter:
-//    ProfilePresenter<ProfileMVPView, ProfileMVPInteractor>):
-//            ProfileMVPPresenter<ProfileMVPView, ProfileMVPInteractor>
-//
-//    @PerActivity
-//    @Binds
-//    internal abstract fun provideProfileMVPInteractor(interactor: ProfileInteractor): ProfileMVPInteractor
-
-
     @Provides
     internal fun provideProfileMVPInteractor(interactor: ProfileInteractor): ProfileMVPInteractor = interactor
 

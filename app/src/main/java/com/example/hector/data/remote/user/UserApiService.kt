@@ -17,7 +17,7 @@ interface UserApiService {
     fun addUser(@Body user: User)
 
     @PUT
-    fun updateUser(@Body user: User)
+    fun updateUser(@Path("userId") id: Long, @Body user: User)
 
     @DELETE("users")
     fun deleteUser(@Path("userId") id: Long)

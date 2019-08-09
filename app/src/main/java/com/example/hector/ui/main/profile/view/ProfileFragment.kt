@@ -3,6 +3,7 @@ package com.example.hector.ui.main.profile.view
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,30 +18,6 @@ import javax.inject.Inject
 
 @SuppressWarnings("TooManyFunctions")
 class ProfileFragment : BaseFragment(), ProfileMVPView, View.OnClickListener {
-
-
-    override fun showErrorUpdateToast() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun updateUserInfo(user: User) {
-        txt_name.text = user.userName
-        txt_edit_year_val.setText(user.userBirthYear.toString())
-        txt_edit_height_val.setText(user.userHeight.toString())
-        txt_edit_step_val.setText(user.userWeight.toString())
-    }
-
-    override fun onSaveClicked() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onMockDataClicked() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun showSuccessUpdateToast() {
-        Toast.makeText(context, "User info updated with success!", Toast.LENGTH_SHORT).show()
-    }
 
     lateinit var tfLight: Typeface
 
@@ -77,16 +54,49 @@ class ProfileFragment : BaseFragment(), ProfileMVPView, View.OnClickListener {
         level2.setOnClickListener(this)
         level3.setOnClickListener(this)
         level4.setOnClickListener(this)
+
+        presenter.onMockDataPrepared()
+
     }
 
     override fun onClick(v: View) {
         when (v) {
-            level1 -> txt_activity_level.text = "SEDENTARY"
+            level1 -> {
+                txt_activity_level.text = "SEDENTARY"
+            }
             level2 -> txt_activity_level.text = "SOMEWHAT ACTIVE"
             level3 -> txt_activity_level.text = "ACTIVE"
             level4 -> txt_activity_level.text = "VERY ACTIVE"
         }
     }
+
+    override fun updateUserList(list: List<User>?) {
+        Log.i("ANNOYING", list.toString())
+    }
+
+    override fun showErrorUpdateToast() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun updateUserInfo(user: User) {
+        txt_name.text = user.userName
+        txt_edit_year_val.setText(user.userBirthYear.toString())
+        txt_edit_height_val.setText(user.userHeight.toString())
+        txt_edit_step_val.setText(user.userWeight.toString())
+    }
+
+    override fun onSaveClicked() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onMockDataClicked() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showSuccessUpdateToast() {
+        Toast.makeText(context, "User info updated with success!", Toast.LENGTH_SHORT).show()
+    }
+
 
     override fun onDestroy() {
         presenter.onDetach()
