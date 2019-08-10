@@ -11,14 +11,14 @@ interface UserApiService {
     fun getAllUsers(): Observable<List<User>>
 
     @GET("users")
-    fun getUserById(@Path("userId") id: Long): Single<User>
+    fun getUserById(@Path("userId") id: Long): Observable<User>
 
     @POST
-    fun addUser(@Body user: User)
+    fun addUser(@Body user: User): Single<Any>
 
     @PUT
-    fun updateUser(@Path("userId") id: Long, @Body user: User)
+    fun updateUser(@Path("userId") id: Long, @Body user: User): Single<Any>
 
     @DELETE("users")
-    fun deleteUser(@Path("userId") id: Long)
+    fun deleteUser(@Path("userId") id: Long): Single<Any>
 }

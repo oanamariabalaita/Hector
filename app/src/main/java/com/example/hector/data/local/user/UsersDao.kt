@@ -20,7 +20,7 @@ interface UsersDao {
     fun getUserById(id: Long): User
 
     @Delete
-    fun delete(user: User)
+    fun delete(id:Long)
 
     @Query(
         "UPDATE user SET name =:userName, gender= :userGender,  birthyear =:userBirthYear, " +

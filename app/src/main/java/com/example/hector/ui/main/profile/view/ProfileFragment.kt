@@ -19,6 +19,18 @@ import javax.inject.Inject
 @SuppressWarnings("TooManyFunctions")
 class ProfileFragment : BaseFragment(), ProfileMVPView, View.OnClickListener {
 
+    override fun openDashboardFragment() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun saveUserInfo(user: User) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun loadUsersList(list: List<User>?) {
+        Log.i("ANNOYING", list.toString())
+    }
+
     lateinit var tfLight: Typeface
 
     @Inject
@@ -56,47 +68,31 @@ class ProfileFragment : BaseFragment(), ProfileMVPView, View.OnClickListener {
         level4.setOnClickListener(this)
 
         presenter.onMockDataPrepared()
-
     }
 
     override fun onClick(v: View) {
         when (v) {
-            level1 -> {
-                txt_activity_level.text = "SEDENTARY"
-            }
+            level1 -> txt_activity_level.text = "SEDENTARY"
             level2 -> txt_activity_level.text = "SOMEWHAT ACTIVE"
             level3 -> txt_activity_level.text = "ACTIVE"
             level4 -> txt_activity_level.text = "VERY ACTIVE"
         }
     }
 
-    override fun updateUserList(list: List<User>?) {
-        Log.i("ANNOYING", list.toString())
-    }
-
     override fun showErrorUpdateToast() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(context, "Connection to server failed!", Toast.LENGTH_SHORT).show()
     }
 
-    override fun updateUserInfo(user: User) {
+    override fun showUserInfo(user: User) {
         txt_name.text = user.userName
         txt_edit_year_val.setText(user.userBirthYear.toString())
         txt_edit_height_val.setText(user.userHeight.toString())
         txt_edit_step_val.setText(user.userWeight.toString())
     }
 
-    override fun onSaveClicked() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onMockDataClicked() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun showSuccessUpdateToast() {
         Toast.makeText(context, "User info updated with success!", Toast.LENGTH_SHORT).show()
     }
-
 
     override fun onDestroy() {
         presenter.onDetach()

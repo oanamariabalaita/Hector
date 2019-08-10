@@ -1,6 +1,5 @@
 package com.example.hector.ui.main.profile.view
 
-import android.util.Log
 import com.example.hector.base.view.MVPView
 import com.example.hector.data.local.user.User
 
@@ -10,12 +9,13 @@ interface ProfileMVPView : MVPView {
 
     fun showErrorUpdateToast()
 
-    fun updateUserInfo(user: User)
+    fun openDashboardFragment()
 
-    fun onSaveClicked()
+    fun showUserInfo(user: User)
 
-    fun onMockDataClicked()
+    fun loadMockUser(user: User)
 
-    fun updateUserList(list: List<User>?): Unit?
+    fun loadUsersList(list: List<User>?)
 
+    fun saveUserInfo(user: User)
 }

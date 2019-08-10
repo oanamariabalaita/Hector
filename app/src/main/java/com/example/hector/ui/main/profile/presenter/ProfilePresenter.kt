@@ -20,26 +20,41 @@ class ProfilePresenter<V : ProfileMVPView, I : ProfileMVPInteractor>
     override fun onMockDataPrepared() {
 
         interactor?.let {
-            it.performServerApiCall()
+            it.getUsersApiCall()
                 .compose(schedulerProvider.ioToMainObservableScheduler())
-                .subscribe({ usersListResponse ->
-                    view?.updateUserList(usersListResponse)
-                }, {
-                    Log.d("api", "errorApiCall")
-                })
+                .doOnNext { usersListResponse ->
+                    view?.loadUsersList(usersListResponse)
+                }
+                .doOnError {  Log.d("api", "errorApiCall") }
+                .doOnSubscribe { disposable-> compositeDisposable.add(disposable) }
         }
     }
 
-    override fun updateUser(user: User) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun updateUser(id: Long, user: User) {
+
+        interactor?.let {
+            it.editUserApiCAll(id, user )
+                .compose(schedulerProvider.ioToMainSingleScheduler())
+                .doOnSuccess {
+                   view?.apply {
+                       showSuccessUpdateToast()
+                       showUserInfo(user)}
+                   }
+                .doOnError {  Log.d("api", "errorUserUpdatedApiCall") }
+                .doOnSubscribe { disposable-> compositeDisposable.add(disposable) }
+        }
     }
 
-    override fun getMockUser(id: Long): User {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getMockUser(id: Long) {
 
-    override fun loadUserInfo(id: Long): User {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        interactor?.let {
+            it.getUserByIdApiCall(id)
+                .compose(schedulerProvider.ioToMainObservableScheduler())
+                .doOnNext { userResponse ->
+                    view?.loadMockUser(userResponse) }
+                .doOnError {  Log.d("api", "errorMockUserApiCall") }
+                .doOnSubscribe { disposable-> compositeDisposable.add(disposable) }
+        }
     }
 
 }

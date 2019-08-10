@@ -8,8 +8,7 @@ import java.util.*
 
 interface ProfileMVPPresenter<V : ProfileMVPView, I : ProfileMVPInteractor> : MVPPresenter<V, I> {
 
-    fun updateUser(user: User)
-    fun getMockUser(id: Long): User
-    fun loadUserInfo(id: Long): User
+    fun updateUser(id: Long, user: User)
+    fun getMockUser(id: Long)
     fun onMockDataPrepared()
 }
